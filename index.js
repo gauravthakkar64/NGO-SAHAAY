@@ -2,7 +2,7 @@ const express = require('express');
 const routes = require("./routes/api"); 
 const bodyParser = require('body-parser');
 const mong = require("mongoose");
-
+var cors = require('cors');
 
 //setup express webapp
 const webapp = express();
@@ -12,7 +12,9 @@ mong.Promise = global.Promise;
 
 
 webapp.use(bodyParser.json());
-
+webapp.use(cors());
+// webapp.set('views', __dirname + '/views');
+// webapp.set('view engine', 'ejs');
 // initialize routes
 webapp.use('/api',routes);
 

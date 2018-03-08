@@ -5,7 +5,9 @@ const Certificates = require('../models/certificates');
 //get certificates from db
 router.get('/certificates/:id',function (req,res,next) {
     Certificates.findOne({_id:req.params.id}).then(function(data){
-        res.send(data);
+        res.json(data);
+        //res.render("certificate-verify.ejs",{certificate:data});
+        
     });
 });
 
