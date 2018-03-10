@@ -10,6 +10,10 @@ router.get('/certificates/:id',function (req,res,next) {
         
     });
 });
+router.get('/abc',function (req,res,next) {
+        res.send("ABC");
+        //res.render("certificate-verify.ejs",{certificate:data});
+});
 
 //add new certificates to sb
 router.post('/certificates',function (req,res,next) {
