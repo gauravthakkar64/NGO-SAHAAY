@@ -7,7 +7,7 @@ var cors = require('cors');
 //setup express webapp
 const webapp = express();
 //connect to mingi db
-mong.connect('mongodb://localhost:27017/ngoSahaay');
+mong.connect('mongodb://sahaay-admin:sahaaymewithpassword@ngosahaay-shard-00-00-hadfz.mongodb.net:27017,ngosahaay-shard-00-01-hadfz.mongodb.net:27017,ngosahaay-shard-00-02-hadfz.mongodb.net:27017/test?ssl=true&replicaSet=NGOSahaay-shard-0&authSource=admin');
 mong.Promise = global.Promise;
 
 
