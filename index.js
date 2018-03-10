@@ -25,7 +25,7 @@ webapp.use(function(err,req,res,next){
 });
 
 //listen for requests
-webapp.listen(process.env.port || 4000,function(){
+webapp.listen(process.env.port,function(){
     console.log('now listeing for reqests');
 });
 
