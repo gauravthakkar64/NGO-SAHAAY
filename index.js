@@ -25,7 +25,10 @@ webapp.use(function(err,req,res,next){
 });
 
 //listen for requests
-webapp.listen(process.env.port,function(){
-    console.log('now listeing for reqests');
-});
+// webapp.listen(process.env.port,function(){
+//     console.log('now listeing for reqests');
+// });
 
+webapp.listen(process.env.PORT || 3000, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+  });
