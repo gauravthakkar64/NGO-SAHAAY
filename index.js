@@ -1,5 +1,6 @@
 const express = require('express');
-const routes = require("./routes/api"); 
+const routes = require("./routes/api");
+const authRoutes = require("./routes/auth"); 
 const bodyParser = require('body-parser');
 const mong = require("mongoose");
 var cors = require('cors');
@@ -16,13 +17,17 @@ webapp.use(cors());
 // webapp.set('views', __dirname + '/views');
 // webapp.set('view engine', 'ejs');
 // initialize routes
+
+webapp.use(function(req,res,next){
+    console.log(req.method + '\t' + req.originalUrl)
+    next();
+});
+
 webapp.use('/api',routes);
+webapp.use('/api/auth', authRoutes);
 
 //error hadling middleware
-webapp.use(function(err,req,res,next){
-    //console.log(err);
-    res.status(422).send({errorrr:err.message});
-});
+
 
 //listen for requests
 // webapp.listen(process.env.port,function(){
