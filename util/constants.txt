@@ -1,0 +1,5 @@
+HostName: ngosahaay-shard-00-00-hadfz.mongodb.net
+Port: 27017
+password: sahaaymewithpassword 
+
+Deployed App: https://whispering-gorge-57229.herokuapp.com
