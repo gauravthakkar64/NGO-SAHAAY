@@ -20,10 +20,11 @@ router.get('/test', function (req, res, next) {
 
 //add new certificates to sb
 router.post('/certificates', function (req, res, next) {
+    console.log('in');
     //var certificates = new Certificates(req.body);
     //certificates.save();
     var flag = true;
-    while (flag) {
+    //while (flag) {
         var id = randomNumber(1000000, 9999999);
         //console.log(id);
         Certificates.findOne({uniqueId: id}, function(err,obj) { 
@@ -35,12 +36,15 @@ router.post('/certificates', function (req, res, next) {
                 req.body.uniqueId = id;
                 console.log(req.body.uniqueId);
                 Certificates.create(req.body).then(function (data, next) {
+                    console.log('sent')
                     res.send(data);
                 }).catch(next);
+                console.log('done')
                 res.send(req.body);
             }
         });
-    }
+    //}
+    console.log('loop')
 });
 
 // //Update certificates

@@ -1,7 +1,7 @@
 const mong = require('mongoose');
 const crypto = require('crypto');
-
-const Schema = mong.Schema;
+const EventSchema = require('./event')
+const Schema = mong.Schema
 
 const ngoSchema = new Schema({
     uniqueId: {
@@ -58,7 +58,9 @@ const ngoSchema = new Schema({
         number: String,
         officeNumber: String,
         faxNo: String
-    }
+    },
+
+    events:[EventSchema]
 });
 
 ngoSchema.methods.setPassword = function(password){

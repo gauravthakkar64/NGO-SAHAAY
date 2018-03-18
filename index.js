@@ -1,6 +1,7 @@
 const express = require('express');
 const routes = require("./routes/api");
 const authRoutes = require("./routes/auth"); 
+const eventsRoutes = require("./routes/events");
 const bodyParser = require('body-parser');
 const mong = require("mongoose");
 var cors = require('cors');
@@ -25,6 +26,7 @@ webapp.use(function(req,res,next){
 
 webapp.use('/api',routes);
 webapp.use('/api/auth', authRoutes);
+webapp.use('/api/events', eventsRoutes);
 
 //error hadling middleware
 
