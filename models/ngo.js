@@ -1,6 +1,8 @@
 const mong = require('mongoose');
 const crypto = require('crypto');
-const EventSchema = require('./event')
+const eventSchema = require('./event');
+const addressSchema = require('./address');
+const imageSchema = require('./photo');
 const Schema = mong.Schema
 
 const ngoSchema = new Schema({
@@ -37,30 +39,21 @@ const ngoSchema = new Schema({
         //required: true
     },
     logo: String,
+    photo:[imageSchema],
     teamSize: Number,
     aboutUs: String,
     establishedYear: {
         type: Date
     },
-    address: {
-        street: String,
-        city: String,
-        state: {
-            type: String,
-        },
-        country: {
-            type: String,
-            required: false
-        },
-        pincode: Number
-    },
+    address: addressSchema,
     contact:{
         number: String,
         officeNumber: String,
         faxNo: String
     },
+    points:Number,
 
-    events:[EventSchema]
+    events:[eventSchema]
 });
 
 ngoSchema.methods.setPassword = function(password){
