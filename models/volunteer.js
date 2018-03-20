@@ -10,14 +10,13 @@ const volunteerSchema = new Schema({
     interests: [String],
     photo: String,
     contactNumber:Number,
-    weeklyHours:Number,
+    weeklyHours:Number, 
     certificates:[String],
     email:String,
     password:{
         hash: String,
-        salt: String,
-        select: false
-    },
+        salt: String
+    }
 });
 volunteerSchema.methods.setPassword = function(password){
     console.log('password ' + password);

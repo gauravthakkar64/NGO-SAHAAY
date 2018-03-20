@@ -32,7 +32,6 @@ const ngoSchema = new Schema({
     password:{
         hash: String,
         salt: String,
-        select: false
     },
     service:{
         type: String,
