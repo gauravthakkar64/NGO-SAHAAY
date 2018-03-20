@@ -1,5 +1,7 @@
 const mong = require('mongoose');
-const Schema = mong.schema;
+const Schema = mong.Schema;
+const crypto = require('crypto');
+
 const addressScehma = require('./address');
 const volunteerSchema = new Schema({
     name: {
@@ -11,7 +13,10 @@ const volunteerSchema = new Schema({
     photo: String,
     contactNumber:Number,
     weeklyHours:Number, 
-    certificates:[String],
+    certificates:{
+        type: [Schema.Types.ObjectId],
+        ref: 'Volunteer',
+    },
     email:String,
     password:{
         hash: String,
@@ -36,4 +41,5 @@ volunteerSchema.methods.toJSON = function(){
     delete obj.password;
     return obj;
 }
-modules.export = volunteerSchema;
+const vs = mong.model('volunteer', volunteerSchema);
+module.exports = vs;

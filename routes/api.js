@@ -13,12 +13,7 @@ router.get('/certificates/:id', function (req, res, next) {
     });
 });
 router.get('/test', function (req, res, next) {
-    var id = 123;
-    Certificates.findOne({
-        uniqueId: id
-    }, function (err, obj) {
-        console.log(obj);
-    });
+
     res.send("Test Api");
 });
 
