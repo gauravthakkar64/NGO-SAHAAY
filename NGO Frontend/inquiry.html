@@ -1,0 +1,127 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Kindness a Charity Category Flat Bootstarp Resposive Website Template| Inquiry :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Kindness Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<script src="js/jquery.min.js"> </script>
+<!--webfonts-->
+ <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600,700|Playball' rel='stylesheet' type='text/css'>
+<!--//webfonts-->
+
+<script> 
+		$(function(){
+		  $("#footerclass").load("footer.html"); 
+		});
+		
+		
+		$(function(){
+		  $("#headerclass").load("header.html"); 
+		});
+</script> 
+
+<script type="text/javascript">
+function allLetter(txtname)
+{
+	var letters=/^[A-Za-z]+$/;
+	if(txtname.value.match(letters))
+	{
+		return true;
+	}
+	else
+	{		
+		txtname.value="";
+		txtname.focus();
+		alert(' Name must have Alphabetic characters only');
+		return false;
+	}
+}
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+	$("#test").keyup(function() {
+	    var val = $("#test").val();
+	    if (parseInt(val) < 0 || isNaN(val)) {
+	        alert("Please Enter Only Numeric Values in Mobile Number");
+	        $("#test").val("");
+	        $("#test").focus();
+	    }
+		});
+	});
+</script>
+</head>
+<body>
+	<!--start-home-->
+	
+	<div id="headerclass">
+	</div>
+
+	<div class="banner two">
+			<h2>Inquiry Form</h2>
+			<h6>Any Questions ???</h6>
+	</div>
+  <div class="container">
+   <div class="contact">
+    <div class="col-md-3 contact-top">
+    </div>
+		<div class="col-md-6 contact-top">
+			<h3>Any Query?</h3>
+      <form action="inquiry.html" method="post">
+				<div class="con-text">
+					<input type="text" placeholder="Name" name="txtname" class="form-control"  onblur="return allLetter(txtname);" maxlength=50 required/>
+				</div>
+				<div class="con-text">
+				  <input type="text" value="" id="test" placeholder="Contact No." name="contact" class="form-control" maxlength=10 required/>
+				</div>
+				<div class="con-text">
+				  <textarea  rows="4" cols="50" placeholder="Description..." name="description" class="form-control" required/></textarea>
+				</div>
+				<center><input style="width:100px; border-radius:10px;" type="submit" value="SEND" ></center>
+      </form>
+		</div>
+	</div>
+</div>
+<div id="footerclass">
+</div>
+			<!--start-smoth-scrolling-->
+			<script type="text/javascript">
+								jQuery(document).ready(function($) {
+									$(".scroll").click(function(event){
+										event.preventDefault();
+										$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+									});
+								});
+								</script>
+							<!--start-smoth-scrolling-->
+						<script type="text/javascript">
+									$(document).ready(function() {
+										/*
+										var defaults = {
+								  			containerID: 'toTop', // fading element id
+											containerHoverID: 'toTopHover', // fading element hover id
+											scrollSpeed: 1200,
+											easingType: 'linear'
+								 		};
+										*/
+
+										$().UItoTop({ easingType: 'easeOutQuart' });
+
+									});
+								</script>
+		<a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+</body>
+</html>
