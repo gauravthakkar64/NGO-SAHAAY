@@ -1,0 +1,16 @@
+{
+    ngoId: "5aabf8e5d3121f18b57462cd"
+	"name":"Charity event",
+	"date":"2019-12-09",
+	"venue":{
+		"street":"Raju chacha road",
+		"city":"Surat",
+		"state":"Gujarat",
+		"country":"India",
+		"pincode":"380016"
+	},
+	"totalDays": 2,
+	"type":"donation",
+	"volunteerSize":10,
+	"volunteersSelected":["5ab0ee1444d20419bc457bf8"]
+}

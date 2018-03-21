@@ -51,8 +51,14 @@ const ngoSchema = new Schema({
         faxNo: String
     },
     points:Number,
-
-    events:[eventSchema]
+    pastEvents:{
+        type:[Schema.Types.ObjectId],
+        ref:'Events'
+    },
+    upcomingEvents:{
+        type:[Schema.Types.ObjectId],
+        ref:'Events'
+    }
 });
 
 ngoSchema.methods.setPassword = function(password){

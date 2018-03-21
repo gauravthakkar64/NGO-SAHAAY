@@ -1,0 +1,18 @@
+{
+	"name":"Service Babu",
+	"address":{
+		"street":"Raju chacha road",
+		"city":"Surat",
+		"state":"Gujarat",
+		"country":"India",
+		"pincode":"380016"
+	},
+	"interests":["children education","food distribution"],
+	"photo":"images/volunteers/profile/",
+	"contactNumber":7565757575,
+	"weeklyHours":5,
+	"certificates":["5aa4464783b0f700049206b2","5aabb1fd811800154caf09cf"],
+	"email":"add175623@gmail.com",
+	"password":"qwerty123"
+	
+}

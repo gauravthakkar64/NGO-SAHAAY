@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const Ngo = require('../models/ngo');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 
 const TOKEN_PRIVATE_KEY = "3sqr"
 

@@ -2,33 +2,33 @@ const express = require('express');
 const Ngo = require('../models/ngo');
 const modelsUtil = require('../util/model-utils')
 const router = express.Router();
+const Events = require('../models/event');
 
 
 //create an event
-router.post('/', function(req, res){
-    const ngoId = req.body.ngoId;
+router.post('/create', function(req, res){
+    Events.create(req.body).then(function (data) {
+        res.send(data);
+    })
+});
 
-    Ngo.findOne({uniqueId: ngoId}, function(err, ngo){
-        if(err){
-            res.json({errMsg: err})
-        }
-        if(!ngo){
-            res.status(404).json({errMsg: 'No'})
-        }
-        else{
-            ngo.events.push(req.body.event)
-            ngo.save(function(err, result){
-                if(err) {
-                    res.json({errMsg: err.message})
-                }
-                else
-                    res.json({event: result})
-            });
-        }
+//NGO approves a Request made by a Volunteer to Event
+router.post('/approve',function(req,res) {
+    Events.findOne({_id: req.body.eventId},function (err,event) {
+        event.volunteerRequests.pull(req.body.volunteerId);
+        event.volunteersSelected.push(req.body.volunteerId);
+        event.save();
     });
 });
 
 
+//request made by NGO to a volunteer
+router.post('/request',function(req,res){
+    Events.findOne({_id: req.body.eventId},function (err,event) {
+        event.volunteersApproched.push(req.body.volunteerId);
+        event.save();
+    });
+});
 
 //get all event of a single ngo
 router.get('/ngo/:id', modelsUtil.loadSingleModel(Ngo, 'id'), function(req, res){

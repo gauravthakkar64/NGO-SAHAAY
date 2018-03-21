@@ -17,10 +17,21 @@ const volunteerSchema = new Schema({
         type: [Schema.Types.ObjectId],
         ref: 'Volunteer',
     },
-    email:String,
+    email:{
+        type: String,
+        unique: true
+    },
     password:{
         hash: String,
         salt: String
+    },
+    pastEevents:{
+        type:[Schema.Types.ObjectId],
+        ref:'Events'
+    },
+    upcomingEvents:{
+        type:[Schema.Types.ObjectId],
+        ref:'Events'
     }
 });
 volunteerSchema.methods.setPassword = function(password){
@@ -28,13 +39,10 @@ volunteerSchema.methods.setPassword = function(password){
     this.password.salt = crypto.randomBytes(16).toString('hex');
     this.password.hash = crypto.pbkdf2Sync(password, this.password.salt, 10000, 512, 'sha512').toString('hex');
 };
-
-
 volunteerSchema.methods.validPassword = function(password) {
     const hash = crypto.pbkdf2Sync(password, this.password.salt, 10000, 512, 'sha512').toString('hex');
     return this.password.hash === hash;
 };
-
 //to delete sesitive information like password from result
 volunteerSchema.methods.toJSON = function(){
     var obj = this.toObject();
