@@ -4,6 +4,13 @@ const modelsUtil = require('../util/model-utils')
 const router = express.Router();
 const Events = require('../models/event');
 
+//fetch a particular event
+router.get('/fetch/:eventId',function(req,res) {
+    Events.findById({id:eventId},function (err,event){
+        res.send(event);
+    });
+});
+
 
 //create an event
 router.post('/create', function(req, res){
