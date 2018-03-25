@@ -5,7 +5,8 @@ const imageSchema = require('./photo');
 const eventSchema = new Schema({
     ngoID:{
         type:Schema.Types.ObjectId,
-        ref: 'ngo'
+        //type:String,
+        required:true
     },
     name: {
         type: String,
