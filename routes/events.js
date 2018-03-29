@@ -7,10 +7,26 @@ const Events = require('../models/event');
 
 router.get('/test',function(req,res){
 });
+
+router.get('/', function(req, res){
+    let query = {};
+    if(req.query.city)
+        query["venue.city"] = req.query.city
+    if(req.query.state)
+        query["venue.state"] = req.query.state
+    
+    Events.find(query).sort({date: 1}).exec(function(err, events) { 
+        res.json(events);
+    });
+});
+
 //fetch a particular event
-router.get('/fetch/:eventId',function(req,res) {
-    Events.findById({id:eventId},function (event){
-        res.send(event);
+router.get('/fetch/:id/',function(req,res) {
+    Events.findById({id: req.params.id},function (err, event){
+        if(err)
+            res.json(err);
+        else
+            res.json(event);
     });
 });
 

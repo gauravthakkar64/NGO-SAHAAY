@@ -13,7 +13,6 @@ const certificateSchema = new Schema({
     },
     service:{
         type:String,
-        default:false
     },
     date:{
         type:Date

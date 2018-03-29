@@ -25,6 +25,8 @@ router.get('/ngos',function (req,res, next) {
 
 
 router.post('/register',function (req,res,next) {
+    req.body.uniqueId = randomNumber(1000000, 9999999);;
+    console.log(req.body);
     Ngo.create(req.body).then(function(ngo) {
         ngo.setPassword(req.body.password);
         ngo.save();
@@ -35,7 +37,8 @@ router.post('/register',function (req,res,next) {
             token: createToken(ngo)
         });    
     }).catch(function(err){
-        return res.status(500).json({'errmsg': err.errmsg});
+        console.log(err)
+        res.status(500).json({'errmsg': err.errmsg});
     });
  });
 
@@ -64,6 +67,8 @@ router.post('/createtoken', function(req, res, next){
     })
 });
 
-
+function randomNumber(low, high) {
+    return Math.floor(Math.random() * (high - low + 1) + low);
+}
 
  module.exports = router;

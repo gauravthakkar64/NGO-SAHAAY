@@ -1,20 +1,25 @@
 const express = require('express');
-
+const modelUtil = require('../util/model-utils')
 const router = express.Router();
 const Certificates = require('../models/certificates');
 //get certificates from db
-router.get('/certificates/:id', function (req, res, next) {
+
+router.get('/certificates/:id', modelUtil.loadSingleModel(Certificates, "id"), function (req, res, next) {
+    console.log(req.params.id)
+    res.json(req.model)
+    /*
     Certificates.findOne({
         _id: req.params.id
     }).then(function (data) {
         res.json(data);
         //res.render("certificate-verify.ejs",{certificate:data});
 
-    });
+    });*/
 });
 router.get('/test', function (req, res, next) {
-
-    res.send("Test Api");
+    Certificates.find(req.query, function(err, ngos) {
+        res.json(ngos);  
+    });
 });
 
 //add new certificates to sb
@@ -22,6 +27,7 @@ router.get('/test', function (req, res, next) {
 router.post('/certificates', function (req, res, next) {
     //var certificates = new Certificates(req.body);
     //certificates.save();
+    console.log(req.body)
     var flag = false;
     var i;
     var id = randomNumber(1000000, 9999999);
@@ -42,7 +48,7 @@ router.post('/certificates', function (req, res, next) {
         Certificates.create(req.body).then(function (data, next) {
             res.send(data);
         }).catch(next);
-        res.send(req.body);
+        //res.send(req.body);
     }
 });
 // //Update certificates

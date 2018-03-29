@@ -12,12 +12,30 @@ module.exports = {
             model.findOne({uniqueId: req.params[queryId]}, function(err, ngo){
                 if(err)
                     res.json({errMsg: err.message})
-                if(!ngo)
-                    res.status(404).json({errMsg: 'Ngo Not Found!'})    
-                req.model = ngo
-                next();
+                else if(!ngo)
+                    res.status(404).json({errMsg: 'Id Not Found!'})    
+                else{
+                    req.model = ngo
+                    next();
+                }
+            });
+        }
+    },
+
+    loadSingleModel(model, field, queryId){
+        return function(req, res, next){
+            model.findOne({field: req.params[queryId]}, function(err, ngo){
+                if(err)
+                    res.json({errMsg: err.message})
+                else if(!ngo)
+                    res.status(404).json({errMsg: 'Id Not Found!'})    
+                else{
+                    req.model = ngo
+                    next();
+                }
             });
         }
     }
+
 
 }
