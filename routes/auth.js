@@ -15,14 +15,6 @@ function createToken(ngo){
     return jwt.sign(payload, TOKEN_PRIVATE_KEY);
 }
 
-//ngo listing
-router.get('/ngos',function (req,res, next) {
-    console.log(req.query)
-    Ngo.find(req.query, function(err, ngos) {
-        res.send(ngos);  
-    });
-});
-
 
 router.post('/register',function (req,res,next) {
     req.body.uniqueId = randomNumber(1000000, 9999999);;

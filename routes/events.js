@@ -3,7 +3,7 @@ const Ngo = require('../models/ngo');
 const modelsUtil = require('../util/model-utils')
 const router = express.Router();
 const Events = require('../models/event');
-
+const mong = require('mongoose');
 
 router.get('/test',function(req,res){
 });
@@ -21,6 +21,7 @@ router.get('/', function(req, res){
 });
 
 //fetch a particular event
+
 router.get('/fetch/:id/',function(req,res) {
     Events.findById({id: req.params.id},function (err, event){
         if(err)
@@ -50,9 +51,16 @@ router.get('/ngoevent/:id',function(req,res){
     });
 });
 
+//find event by type
+router.post('/eventbytype', function (req, res) {
+    Ngo.find(req.body).then((obj,err)=>{
+        res.status(200).json(obj);
+    });
+});
+
+
 //create an event
-// BUG 1:date actually stored in database is a day less than what is actually passed
-// Error 2: ngoID validation error
+
 router.post('/create', function(req, res){
     //console.log(req.body);
     Events.create(req.body).then(function (err,data) {

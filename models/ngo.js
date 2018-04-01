@@ -35,7 +35,6 @@ const ngoSchema = new Schema({
     },
     service:{
         type: String,
-        //required: true
     },
     logo: String,
     photo:[imageSchema],
