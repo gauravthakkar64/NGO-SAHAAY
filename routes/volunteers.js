@@ -12,7 +12,6 @@ router.get('/fetch/:id', function (req, res, next) {
         _id: req.params.id
     }).then(function (data) {
         res.json(data);
-
     });
 });
 
