@@ -22,6 +22,8 @@ webapp.use(cors());
 // webapp.set('view engine', 'ejs');
 // initialize routes
 
+webapp.use(express.static('public'));
+
 webapp.use(function(req,res,next){
     console.log(req.method + '\t' + req.originalUrl)
     next();

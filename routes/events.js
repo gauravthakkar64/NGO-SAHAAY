@@ -7,12 +7,27 @@ const mong = require('mongoose');
 
 router.get('/test',function(req,res){
 });
+
+router.get('/', function(req, res){
+    let query = {};
+    if(req.query.city)
+        query["venue.city"] = req.query.city
+    if(req.query.state)
+        query["venue.state"] = req.query.state
+    
+    Events.find(query).sort({date: 1}).exec(function(err, events) { 
+        res.json(events);
+    });
+});
+
 //fetch a particular event
-router.get('/fetch/:eventId',function(req,res) {
-    Events.findOne({
-        _id: req.params.eventId
-    }).then(function (data) {
-        res.json(data);
+
+router.get('/fetch/:id/',function(req,res) {
+    Events.findById({id: req.params.id},function (err, event){
+        if(err)
+            res.json(err);
+        else
+            res.json(event);
     });
 });
 
