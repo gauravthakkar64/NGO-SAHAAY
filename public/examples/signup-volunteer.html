@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" href="../assets/img/favicon.png">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Sign Up Page - Material Kit by Creative Tim</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+	<!--     Fonts and icons     -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- CSS Files -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/css/material-kit.css" rel="stylesheet"/>
+	<script src="../assets/js/jquery.min.js"> </script>
+<script> 
+$(function(){
+  $("#headerclass").load("header.html"); 
+  $("#footerclass").load("footer.html");
+});
+</script>  
+<script type="text/javascript">
+	$(document).ready(function(){
+	$("#test2").keyup(function() {
+	    var val = $("#test2").val();
+	    if (parseInt(val) < 0 || isNaN(val)) {
+	        alert("Please Enter Only Numeric Values in Volunteer Id");
+	        $("#test2").val("");
+	        $("#test2").focus();
+	    }
+		});
+	});
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	$("#test3").keyup(function() {
+	    var val = $("#test3").val();
+	    if (parseInt(val) < 0 || isNaN(val)) {
+	        alert("Please Enter Only Numeric Values in Volunteer Id");
+	        $("#test3").val("");
+	        $("#test3").focus();
+	    }
+		});
+	});
+</script>
+
+<script type="text/javascript">
+function allLetter(txtname)
+{
+	var letters=/^[A-Za-z]+$/;
+	if(txtname.value.match(letters))
+	{
+		return true;
+	}
+	else
+	{		
+		txtname.value="";
+		txtname.focus();
+		alert(' Name must have Alphabetic characters only');
+		return false;
+	}
+}
+</script>
+
+</head>
+
+<body class="signup-page">
+	
+	<div id="headerclass">
+	</div>
+
+
+    <div class="wrapper">
+		<div class="header header-filter" style="background-image: url('../assets/img/city.jpg'); background-size: cover; background-position: top center;">
+			<div class="container">
+				<div class="row">
+				
+					<div class="col-md-12">
+						<div class="card card-signup">
+							<form class="form" method="post" action="signup-page.html">
+								
+								<div class="col-md-3"></div>
+								<div class="col-md-6">
+								<div class="header header-primary text-center">
+									<h4>Sign Up as A Volunteer</h4>
+									<div class="social-line">
+										<a href="#pablo" class="btn btn-simple btn-just-icon">
+											<i class="fa fa-facebook-square"></i>
+										</a>
+										<a href="#pablo" class="btn btn-simple btn-just-icon">
+											<i class="fa fa-twitter"></i>
+										</a>
+										<a href="#pablo" class="btn btn-simple btn-just-icon">
+											<i class="fa fa-google-plus"></i>
+										</a>
+									</div>
+								</div>
+								</div>
+								<div class="col-md-3"></div>														
+								<div class="content col-md-6">
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">face</i>
+										</span>
+										<input type="text" class="form-control" name="txtname" placeholder="First Name" onblur="return allLetter(txtname);" required/>
+									</div>
+
+									<div class="input-group" >
+										<span class="input-group-addon">
+											<i class="material-icons">email</i>
+										</span>
+										<input type="email" class="form-control" placeholder="Email Id" name="txtemail" required/>
+									</div>
+
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">lock_outline</i>
+										</span>
+										<input type="password" placeholder="Password" class="form-control" name="txtpassword" required/>
+									</div>
+
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">lock_outline</i>
+										</span>
+										<input type="password" placeholder="Confirm Password" class="form-control" name="txtrepassword" required/>
+									</div>
+																	
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">smartphone</i>
+										</span>
+										
+										<input type="text" id="test2" class="form-control" name="txtmobile" placeholder="Mobile Number" required/>
+									</div>
+									
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">smartphone</i>
+										</span>
+										
+										<input type="text" id="test3" class="form-control" name="txtweekly" placeholder="Weekly Hours" required/>
+									</div>
+										
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">domain</i>
+										</span>
+										<label style="float:left;margin-top:20px;margin-right:20px;">Photo</label>
+										<input type="file" type="form-control-file" name="txtlogo" style="margin-top:20px;" required/>
+									</div>
+									
+								</div>
+								<div class="content col-md-6">
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">local_laundry_service</i>
+										</span>
+										<label style="float:left;margin-top:20px;margin-right:20px;">Intrestes</label>
+										<input type="checkbox" value="Management" name="txtint1">    Management									
+										<input type="checkbox" value="Management" name="txtint1">    Management									
+										<input type="checkbox" value="Management" name="txtint1">    Management	<br>								
+										<input type="checkbox" value="Management" name="txtint1">    Management									
+										<input type="checkbox" value="Management" name="txtint1">    Management									
+										<input type="checkbox" value="Management" name="txtint1">    Management								
+										
+									</div>	
+									
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">home</i>
+										</span>	
+										<textarea rows="5"  placeholder="Upcomming Events" class="form-control" name="txtupcomming" required/></textarea>
+									</div>
+
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">location_city</i>
+										</span>
+										<textarea rows="9"  class="form-control"  placeholder="Past Events" name="txtpast" required/></textarea>
+									</div>
+
+									
+								</div>
+								<div class="footer text-center col-md-12">
+									<input type="submit" name="txtsignup" value="SignUp" class="btn btn-primary">
+								</div>
+							</form>
+						</div>
+					</div>
+					
+					
+				</div>
+			</div>
+
+			<div id="footerclass">
+			
+			</div>
+
+		</div>
+
+    </div>
+
+
+</body>
+	<!--   Core JS Files   -->
+	<script src="../assets/js/jquery.min.js" type="text/javascript"></script>
+	<script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../assets/js/material.min.js"></script>
+
+	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+	<script src="../assets/js/nouislider.min.js" type="text/javascript"></script>
+
+	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+	<script src="../assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
+
+	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+	<script src="../assets/js/material-kit.js" type="text/javascript"></script>
+
+</html>

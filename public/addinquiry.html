@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" href="assets/img/favicon.png">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Material Kit by Creative Tim</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+	<!--     Fonts and icons     -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+	<!-- CSS Files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/material-kit.css" rel="stylesheet"/>
+
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link href="assets/css/demo.css" rel="stylesheet" />
+	<script src="assets/js/jquery.min.js"> </script>
+
+<script type="text/javascript">
+function allLetter(txtname)
+{
+	var letters=/^[A-Za-z]+$/;
+	if(txtname.value.match(letters))
+	{
+		return true;
+	}
+	else
+	{		
+		txtname.value="";
+		txtname.focus();
+		alert(' Name must have Alphabetic characters only');
+		return false;
+	}
+}
+</script>
+<script> 
+$(function(){
+  $("#headerclass").load("header.html"); 
+  $("#footerclass").load("footer.html");
+});
+</script>  
+<script type="text/javascript">
+	$(document).ready(function(){
+	$("#test3").keyup(function() {
+	    var val = $("#test3").val();
+	    if (parseInt(val) < 0 || isNaN(val)) {
+	        alert("Please Enter Only Numeric Values in Mobile Number");
+	        $("#test3").val("");
+	        $("#test3").focus();
+	    }
+		});
+	});
+</script>
+</head>
+
+<body class="index-page">
+<!-- Navbar -->
+
+
+<!-- End Navbar -->
+<div id="headerclass">
+
+</div>
+<div class="wrapper">
+	<div class="header header-filter" style="background-image: url('assets/img/bg2.jpeg'); height:400px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="brand">
+						<h1>Material Kit.</h1>
+						<h3>A Badass Bootstrap UI Kit based on Material Design.</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="main main-raised">
+	    <div class="section" id="javascriptComponents">
+	        <div class="container">
+	            <div class="title">
+	                <h2><center><b>Any Inquiry ?</b></center></h2>
+	            </div>
+
+	            <div class="row">
+					<div class="col-md-4">
+						<img src="assets/img/bg.jpg" alt="NGO Sahaay Logo" height="250px" width="350px">
+					</div>
+	                <div class="col-md-8">
+					<form action="addinquiry.html" method="post">
+						<div class="content">
+							<div class="input-group">
+							<span class="input-group-addon">
+							<b>Name : </b>
+							</span>
+							
+							<input type="text" class="form-control" placeholder="Name" name="txtname" onblur="return allLetter(txtname);" maxlength=50 required/>
+							
+							</div>
+						</div>	                 
+						
+						<div class="content">
+							<div class="input-group">
+							<span class="input-group-addon">
+							<b>Mobile : </b>
+							</span>
+							
+							<input type="text"id="test3" class="form-control" placeholder="Service" name="txtmobile" maxlength="10" required/>
+							
+							</div>
+						</div>	
+						
+						<div class="content">
+							<div class="input-group">
+							<span class="input-group-addon">
+							<b>Desctiption : </b>
+							</span>
+							
+							<textarea rows="5" cols="78" name="txtdesc" class="form-control" placeholder="Desctiption" required></textarea>
+							
+							</div>
+						</div>	
+						<center>
+						
+						<input type="submit" class="btn btn-primary" value="Submit">
+						
+						</center>
+					</form>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>
+
+	</div>
+    <div id="footerclass">
+	</div>
+</div>
+
+<!-- Sart Modal -->
+<!--  End Modal -->
+
+
+</body>
+	<!--   Core JS Files   -->
+	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="assets/js/material.min.js"></script>
+
+	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+	<script src="assets/js/nouislider.min.js" type="text/javascript"></script>
+
+	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+	<script src="assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
+
+	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+	<script src="assets/js/material-kit.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+
+		$().ready(function(){
+			// the body of this function is in assets/material-kit.js
+			materialKit.initSliders();
+            window_width = $(window).width();
+
+            if (window_width >= 992){
+                big_image = $('.wrapper > .header');
+
+				$(window).on('scroll', materialKitDemo.checkScrollForParallax);
+			}
+
+		});
+	</script>
+</html>
