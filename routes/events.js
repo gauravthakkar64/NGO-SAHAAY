@@ -81,10 +81,15 @@ router.post('/approve',function(req,res) {
 
 
 //request made by NGO to a volunteer
+// REQ BODY {"voluteerId":"5ab0ee1444d20419bc457bf8","eventId":"5abbc070fe0249330c9f49b0"}
+//ADDS THE given volunteer Id to the event model in volunteersapproached
 router.post('/request',function(req,res){
-    Events.findOne({_id: req.body.eventId},function (err,event) {
+    Events.findOne({_id:req.body.eventId}).then(function (event,err) {
         event.volunteersApproched.push(req.body.volunteerId);
+        res.sendStatus(200);
         event.save();
+    }).catch(err=>{
+        console.log(err);
     });
 });
 

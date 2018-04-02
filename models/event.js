@@ -3,7 +3,7 @@ const Schema = mong.Schema;
 const addressSchema = require('./address');
 const imageSchema = require('./photo');
 const eventSchema = new Schema({
-    ngoID:{
+    ngoId:{
         type:Schema.Types.ObjectId,
         //type:String,
         required:true
