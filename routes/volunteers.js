@@ -11,7 +11,12 @@ router.get('/fetch/:id', function (req, res, next) {
     Volunteers.findOne({
         _id: req.params.id
     }).then(function (data) {
-        res.json(data);
+        if(data)
+            res.json(data);
+        else    
+            res.status(444).json("No Volunteer with the given ID found");
+    }).catch(function(err){
+        res.status(344).json(err);
     });
 });
 
@@ -37,20 +42,41 @@ router.post('/register', function (req, res, next) {
                     email: data.email,
                     token: createToken(data)
                 }); 
-            }).catch(next);
+                res.status(200).json("Successfully registered");
+            }).catch(function (err){
+                res.status(344).json(err);
+            });
         }
         else {
-            res.send("Already exists");
+            res.status(444).json("Already exists");
             flag=false;
         }
     });
 });
 
 // Request made by a volunteer to an NGO for event
-router.post('/request',function(req,res) {
-    Events.findOne({_id: req.body.eventId},function (err,event) {
-        event.volunteerRequests.push(req.body.volunteerId);
-        event.save();
+router.post('/request', function (req, res) {
+    Events.findOne({
+        _id: req.body.eventId
+    }, function (err, event) {
+        if (event) {
+            Volunteers.findOne({
+                _id: req.body.volunteerId
+            }).then(function (volunteer) {
+
+                if (volunteer) {
+                    event.volunteerRequests.push(req.body.volunteerId);
+                    event.save();
+                    res.status(200).json("Request Processed Successfully");
+                } else {
+                    res.status(444).json("Volunteer with given event Id not found");
+                }
+
+            });
+
+        } else {
+            res.status(444).json("Event with given event Id not found");
+        }
     });
 });
 
@@ -68,14 +94,18 @@ router.post('/approve',function(req,res) {
                     res.sendStatus(200);
                 }
                 else{
-                    res.status(200).json("No volunteer found by the given volunteer ID");        
+                    res.status(444).json("No volunteer found by the given volunteer ID");        
                 }
-            });
+            }.catch(err=>{
+                res.status(344).json(err);
+            }));
         }
         else{
-            res.status(200).json("No event found by the given event ID");
+            res.status(445).json("No event found by the given event ID");
         }
-    });
+    }.catch(err=>{
+        res.status(444).json("No volunteer found by the given volunteer ID");        
+    }));
 });
 
 //viewing participated events of volunteer
@@ -98,7 +128,7 @@ router.get('/participatedevents/:id', function (req, res) {
                 res.status(200).json(objs);
             });
         } else {
-            res.status(344).json("Volunteer not found");
+            res.status(444).json("Volunteer not found");
         }
     });
 });
@@ -123,7 +153,7 @@ router.get('/upcomingParticipatedEvents/:id', function (req, res) {
                 res.status(200).json(objs);
             });
         } else {
-            res.status(344).json("Volunteer not found");
+            res.status(444).json("Volunteer not found");
         }
     });
 });
