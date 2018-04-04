@@ -248,24 +248,26 @@ $(function(){
                                     <p class="category">Add new Event</p>
                                 </div>
                                 <div class="card-content">
-                                    <form action="addevent" method="POST">
+                                    <form action="/api/events/create" method="POST">
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Event Name</label>
-                                                    <input type="text" name="txteventname" class="form-control">
+                                                    <input type="text" 
+                                                    value="sahaay" name="name" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Date</label>
-                                                    <input class="datepicker form-control" name="txtdate" type="text"  value="03/23/2018" required/>
+                                                    <input class="datepicker form-control" name="date" type="text"  value="03/23/2018" required/>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Total Days</label>
-                                                    <input type="number" name="txttotaldays" class="form-control">
+                                                    <input type="number" 
+                                                    value="5" name="totalDays" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -282,7 +284,8 @@ $(function(){
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Volunteer Size</label>
-                                                    <input type="number" class="form-control" name="txtvolunteersize" required/>
+                                                    <input type="number" class="form-control" 
+                                                    value="5" name="volunteerSize" required/>
                                                 </div>
                                             </div>                                                                                        
                                         </div>
@@ -290,7 +293,10 @@ $(function(){
                                             <div class="col-md-6">
                                                 <div class="label-floating">
                                                     <label class="control-label">Photo</label>
-                                                    <input type="file" name="txtphoto" required/>
+                                                    <input type="file" 
+                                                    id="inputFileToLoad" 
+                                                    onchange="encodeImageFileAsURL();"
+                                                    name="photos" required/>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -307,7 +313,9 @@ $(function(){
                                             <div class="col-md-12">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Street</label>
-                                                    <input type="text" name="txtstreet" class="form-control">
+                                                    <input type="text" 
+                                                    value="221 baker street"
+                                                    name="street" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -340,8 +348,8 @@ $(function(){
                                                 </div>
                                             </div>
                                         </div>                                        
-                                        <button type="submit" class="btn btn-primary pull-right">Add</button>
-                                        <div class="clearfix"></div>
+                                        <button id="btnCreate" class="btn btn-primary pull-right">Add</button>
+                                        <div class="clearfix"></div>  
                                     </form>
                                 </div>
                             </div>
@@ -366,6 +374,7 @@ $(function(){
                     </div>
                 </div>
             </div>
+            <div id="imgTest"></div>
             <div id="footerclass">
 			
 			</div>
@@ -394,5 +403,64 @@ $(function(){
 
 <script src="../assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
 <script src="../assets/js/material-kit.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" type="text/javascript"></script>
+
+<script>
+  var photoUrl = "";
+  function encodeImageFileAsURL() {
+
+    var filesSelected = document.getElementById("inputFileToLoad").files;
+    if (filesSelected.length > 0) {
+      var fileToLoad = filesSelected[0];
+
+      var fileReader = new FileReader();
+
+      fileReader.onload = function(fileLoadedEvent) {
+        var srcData = fileLoadedEvent.target.result; // <--- data: base64
+        alert("Converted Base64 version is " + srcData);
+        photoUrl = srcData;
+      }
+      fileReader.readAsDataURL(fileToLoad);
+    }
+  }
+
+  $().ready(function(){
+      $("#btnCreate").click(function(event){
+        event.preventDefault();
+        console.log('btnsubmit');
+        var eventData ={
+            name: $("input[name=name]").val(),
+            totalDays: $("input[name=totalDays]").val(),
+            volunteerSize: $("input[name=volunteerSize]").val(),
+            date: $("input[name=date]").val(),
+            type: $('select[name=drpeventtype]').val(),
+            venue: {
+              street: $("input[name=street]").val(),
+              city: $('select[name=drpcity]').val(),
+              state: $('select[name=drpstate]').val(),
+              country:$('select[name=drpcountry]').val()
+            },
+            photos: [
+              'photoUrl'
+            ]
+
+        }
+        console.log(eventData);
+
+
+        axios.post('/api/events/create', eventData)
+             .then(function (resp) {
+                alert(resp);
+             })
+             .catch(function (error) {
+                console.log(error.data);
+             }
+        );
+
+      });      
+  });
+  
+
+</script>
 
 </html>

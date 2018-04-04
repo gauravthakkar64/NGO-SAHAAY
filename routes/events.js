@@ -62,11 +62,30 @@ router.post('/eventbytype', function (req, res) {
 //create an event
 
 router.post('/create', function(req, res){
-    //console.log(req.body);
+    console.log('create')
+    console.log(req.body);
+
+    /* Example Request Body
+        { 
+          name: 'sahaay',
+          totalDays: '5',
+          volunteerSize: '5',
+          date: '03/23/2018',
+          type: 'donation',
+          venue: 
+          { 
+             street: '221 baker street',
+             city: 'Ahmedabad',
+             state: 'Gujarat',
+             country: 'India' 
+          },
+          photos: [ 'photo in base64', ] 
+        }
+    */
     Events.create(req.body).then(function (err,data) {
-        res.send(data);
+        res.json(data);
     }).catch(err=>{
-        res.status(344).json(err);
+        res.status(404).json(err);
     });
 });
 
