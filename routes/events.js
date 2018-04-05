@@ -80,7 +80,7 @@ router.patch('/update/:id', function (req, res, next) {
                 delete req.body._id;
             }
 
-            for(var p in req.body)
+            for(var p in req.body) 
             {
                 EventUpdate[p]=req.body[p];
             }
