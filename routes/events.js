@@ -23,7 +23,7 @@ router.get('/', function(req, res){
 //fetch a particular event
 
 router.get('/fetch/:id/',function(req,res) {
-    Events.findById({id: req.params.id},function (err, event){
+    Events.findById({_id: req.params.id},function (err, event){
         if(err)
             res.json(err);
         else
@@ -69,6 +69,36 @@ router.post('/create', function(req, res){
         res.status(344).json(err);
     });
 });
+//Update an event
+router.patch('/update/:id', function (req, res, next) {
+    
+    Events.findById({_id:req.params.id}, function(err, EventUpdate){
+        if(!err)
+        {
+            if(req.body._id)
+            {
+                delete req.body._id;
+            }
+
+            for(var p in req.body)
+            {
+                EventUpdate[p]=req.body[p];
+            }
+
+            EventUpdate.save(function(err){
+                if(!err)
+                {
+                    res.status(200);
+                    res.send(EventUpdate);
+                }
+                else{
+                    res.send("failed");
+                }
+            });
+        }
+     });
+ });
+
 
 //NGO approves a Request made by a Volunteer to Event
 router.post('/approve',function(req,res) {
