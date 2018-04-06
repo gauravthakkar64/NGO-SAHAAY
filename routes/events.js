@@ -58,6 +58,12 @@ router.post('/eventbytype', function (req, res) {
     });
 });
 
+//total event count
+router.get('/count',function(req,res){
+    Events.find().then(objs=>{
+        res.json(objs.length);
+    });
+ });
 
 //create an event
 

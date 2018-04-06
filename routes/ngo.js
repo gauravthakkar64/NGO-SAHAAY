@@ -17,6 +17,13 @@ router.get('/fetch/:id', function (req, res, next) {
     });
 });
 
+ //total NGO count
+ router.get('/count',function(req,res){
+    Ngo.find().then(objs=>{
+        res.json(objs.length);
+    });
+ });
+
 //find NGO by tag
 // Accepts input in the form of array eg : service:["service1","service2"]
 router.post('/ngobyservice', function (req, res) {

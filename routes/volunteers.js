@@ -84,6 +84,13 @@ router.patch('/update/:id', function (req, res, next) {
      });
  });
 
+ //total volunter count
+ router.get('/count',function(req,res){
+    Volunteers.find().then(objs=>{
+        res.json(objs.length);
+    });
+ });
+
 // Request made by a volunteer to an NGO for event
 router.post('/request', function (req, res) {
     Events.findOne({
