@@ -13,7 +13,12 @@ router.get('/fetch/:id', function (req, res, next) {
     Ngo.findOne({
         uniqueId: req.params.id
     }).then(function (data) {
-        res.json(data);
+        if(data){
+            res.status(200).json(data);
+        }
+        else{
+            res.status(444).json("No volunteer with the specfifed Id found");
+        }
     });
 });
 

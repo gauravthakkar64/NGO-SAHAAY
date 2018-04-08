@@ -4,17 +4,22 @@ const router = express.Router();
 const Certificates = require('../models/certificates');
 //get certificates from db
 
-router.get('/certificates/:id', modelUtil.loadSingleModel(Certificates, "id"), function (req, res, next) {
-    console.log(req.params.id)
-    res.json(req.model)
-    /*
-    Certificates.findOne({
-        _id: req.params.id
-    }).then(function (data) {
-        res.json(data);
-        //res.render("certificate-verify.ejs",{certificate:data});
+//router.get('/certificates/:id', modelUtil.loadSingleModel(Certificates, "id"), function (req, res, next) {
+  router.get('/certificates/:id',function (req,res){
 
-    });*/
+/*     console.log(req.params.id)
+    res.json(req.model) */
+    
+    Certificates.findOne({
+        uniqueId: req.params.id
+    }).then(function (data) {
+        if(data)
+            res.status(200).json(data);
+        else    
+            res.status(444).json("No certificate Found");
+    }).catch(err=>{
+        res.status(344).json(err);
+    });
 });
 router.get('/test', function (req, res, next) {
     Certificates.find(req.query, function(err, ngos) {
@@ -47,7 +52,9 @@ router.post('/certificates', function (req, res, next) {
         console.log(req.body.uniqueId);
         Certificates.create(req.body).then(function (data, next) {
             res.send(data);
-        }).catch(next);
+        }).catch(err=>{
+            res.status(344).json(err);
+        });
         //res.send(req.body);
     }
 });

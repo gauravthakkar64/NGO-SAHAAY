@@ -153,4 +153,16 @@ router.get('/ngo/:id', modelsUtil.loadSingleModel(Ngo, 'id'), function(req, res)
     res.json(req.model.events)
 });
 
+
+//all requested volunteers of a particular event
+router.get('/approached/:id', function (req, res) {
+    Events.find({
+        _id: req.params.id
+    }).populate('volunteersSelected').exec(function (err, events) {
+        if(err)
+            console.log(err);
+        else
+            console.log(events);
+    });
+});
 module.exports = router

@@ -23,15 +23,15 @@ const eventSchema = new Schema({
     photos:[imageSchema],
     volunteersSelected:[{
         type: Schema.Types.ObjectId,
-        ref: 'Volunteer'
+        ref: 'volunteer'
     }],
     volunteersApproched:[{
         type: Schema.Types.ObjectId,
-        ref: 'Volunteer'
+        ref: 'volunteer'
     }],
     volunteerRequests:[{
         type: Schema.Types.ObjectId,
-        ref: 'Volunteer'
+        ref: 'volunteer'
     }]
 });
 const Events = mong.model('Events', eventSchema);
