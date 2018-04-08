@@ -8,6 +8,26 @@ router.get('/test', (req, res) => {
     res.send("test API");
 });
 
+//Get ngo by unique id
+router.get('/fetch/:id', function (req, res, next) {
+    Ngo.findOne({
+        uniqueId: req.params.id
+    }).then(function (data) {
+        if(data){
+            res.status(200).json(data);
+        }
+        else{
+            res.status(444).json("No volunteer with the specfifed Id found");
+        }
+    });
+});
+
+ //total NGO count
+ router.get('/count',function(req,res){
+    Ngo.find().then(objs=>{
+        res.json(objs.length);
+    });
+ });
 
 //find NGO by tag
 // Accepts input in the form of array eg : service:["service1","service2"]
@@ -34,6 +54,23 @@ router.get('/ngos', function (req, res, next) {
         res.send(ngos);
     });
 });
+
+//Update NGO By id
+router.patch('/update/:id', function (req, res, next) {
+
+
+     let query={uniqueId:req.params.id}
+ 
+     Ngo.update(query, req.body, function(err){
+         if(err)
+         {
+             console.log(err);
+             return;
+         }else{
+             res.send(req.body);
+         }
+     });
+ });
 
 
 module.exports = router;

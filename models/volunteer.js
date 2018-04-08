@@ -19,7 +19,8 @@ const volunteerSchema = new Schema({
     },
     email:{
         type: String,
-        unique: true
+        unique: [true, "email already exist."],
+        required: true
     },
     password:{
         hash: String,

@@ -58,6 +58,12 @@ router.post('/eventbytype', function (req, res) {
     });
 });
 
+//total event count
+router.get('/count',function(req,res){
+    Events.find().then(objs=>{
+        res.json(objs.length);
+    });
+ });
 
 //create an event
 
@@ -88,6 +94,36 @@ router.post('/create', function(req, res){
         res.status(404).json(err);
     });
 });
+//Update an event
+router.patch('/update/:id', function (req, res, next) {
+    
+    Events.findById({_id:req.params.id}, function(err, EventUpdate){
+        if(!err)
+        {
+            if(req.body._id)
+            {
+                delete req.body._id;
+            }
+
+            for(var p in req.body) 
+            {
+                EventUpdate[p]=req.body[p];
+            }
+
+            EventUpdate.save(function(err){
+                if(!err)
+                {
+                    res.status(200);
+                    res.send(EventUpdate);
+                }
+                else{
+                    res.send("failed");
+                }
+            });
+        }
+     });
+ });
+
 
 //NGO approves a Request made by a Volunteer to Event
 router.post('/approve',function(req,res) {
@@ -117,4 +153,16 @@ router.get('/ngo/:id', modelsUtil.loadSingleModel(Ngo, 'id'), function(req, res)
     res.json(req.model.events)
 });
 
+
+//all requested volunteers of a particular event
+router.get('/approached/:id', function (req, res) {
+    Events.find({
+        _id: req.params.id
+    }).populate('volunteersSelected').exec(function (err, events) {
+        if(err)
+            console.log(err);
+        else
+            console.log(events);
+    });
+});
 module.exports = router

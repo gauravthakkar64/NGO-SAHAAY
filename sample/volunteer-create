@@ -1,18 +1,28 @@
+Volunteer Create
+
 {
-	"name":"Service Babu",
+	"name":"Roshan Bilukaiya",
 	"address":{
-		"street":"Raju chacha road",
-		"city":"Surat",
-		"state":"Gujarat",
+		"street":"1247 Pleasant Hill Road	",
+		"city":"Miami",
+		"state":"FL",
 		"country":"India",
-		"pincode":"380016"
+		"pincode":"310456"
 	},
-	"interests":["children education","food distribution"],
+	"interests":["education"],
 	"photo":"images/volunteers/profile/",
-	"contactNumber":7565757575,
-	"weeklyHours":5,
-	"certificates":["5aa4464783b0f700049206b2","5aabb1fd811800154caf09cf"],
-	"email":"add175623@gmail.com",
+	"contactNumber":7456335434,
+	"weeklyHours":1,
+	"certificates":[],
+	"email":"DiannaJKapp@jourrapide.com",
 	"password":"qwerty123"
 	
+}
+
+certificates
+{
+	"service":"Saved black buck from Bhai",
+	"volunteerName":"Rajesh Doe",
+	"ngoName":"PraniGhar",
+	"date":"2018-1-25"
 }

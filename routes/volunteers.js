@@ -54,6 +54,38 @@ router.post('/register', function (req, res, next) {
     });
 });
 
+//Update existing volunteer profile
+router.patch('/update/:id', function (req, res, next) {
+
+    Volunteers.findById(req.params.id, function (err, volunteerpro) {
+        if (!err) {
+            if (req.body._id) {
+                delete req.body._id;
+            }
+            for (var p in req.body) {
+                volunteerpro[p] = req.body[p];
+            }
+            volunteerpro.save(function (err) {
+                if (!err) {
+                    res.status(200).json(volunteerpro);
+                } else {
+                    res.status(344).json("failed");
+                }
+            });
+        }
+        else{
+            res.status(444).json(err);
+        }
+    });
+});
+
+ //total volunter count
+ router.get('/count',function(req,res){
+    Volunteers.find().then(objs=>{
+        res.json(objs.length);
+    });
+ });
+
 // Request made by a volunteer to an NGO for event
 router.post('/request', function (req, res) {
     Events.findOne({
