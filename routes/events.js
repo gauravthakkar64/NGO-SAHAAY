@@ -23,7 +23,7 @@ router.get('/', function(req, res){
 //fetch a particular event
 
 router.get('/fetch/:id/',function(req,res) {
-    Events.findById({id: req.params.id},function (err, event){
+    Events.findById({_id: req.params.id},function (err, event){
         if(err)
             res.json(err);
         else
