@@ -183,7 +183,8 @@
                                                     <label class="control-label">Username</label>
                                                     <input type="text" 
                                                     value="{{uniqueId}}" 
-                                                    name="uniqueId"class="form-control">
+                                                    name="uniqueId"
+                                                    class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -241,7 +242,9 @@
                                                     <label>About Me</label>
                                                     <div class="form-group label-floating">
                                                         <label class="control-label"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                                                        <textarea class="form-control" rows="5">
+                                                        <textarea class="form-control" 
+                                                                  rows="5"
+                                                                  id="aboutUs">
                                                             {{aboutUs}}
                                                         </textarea>
                                                     </div>
@@ -365,30 +368,31 @@
     });
 
     function update(event){
-            console.log('update');
-            var eventData ={
-                name: $("input[name=name]").val(),
-                email: $('[name="txtemail"]').val(),     
-                venue: {
-                  street: $("input[name=street]").val(),
-                  city: $('select[name=drpcity]').val(),
-                  state: $('select[name=drpstate]').val(),
-                  country:$('select[name=drpcountry]').val()
-                },
-                photos: [
-                  'photoUrl'
-                ]
-
-            }
-            console.log(eventData);
-
             var id = '8676318';
-            axios.put('/api/ngo/update/'+id, eventData)
+            console.log('update');
+            var ngoData ={
+                name: $("input[name=company]").val(),
+                email: $('[name="email"]').val(),     
+                address: {
+                  street: $("input[name=street]").val(),
+                  city: $('input[name=city]').val(),
+                  state: $('input[name=state]').val(),
+                  country:$('input[name=country]').val(),
+                  pincode: $('input[name=pincode]').val()
+                },
+                aboutUs: $('#aboutUs').val()
+            }
+            console.log(ngoData);
+
+            
+            axios.patch('/api/ngo/update/'+id, ngoData)
                  .then(function (resp) {
-                    alert(resp);
+                    console.log(resp.data);
+                    alert('Updated');
                  })
                  .catch(function (error) {
-                    console.log(error.data);
+                    console.log(error);
+                    alert('Update Failed');
                  }
             );
 

@@ -425,6 +425,7 @@ $(function(){
   }
 
   $().ready(function(){
+      var ngoId = "5ab7a12117f80f169302a9bc";
       $("#btnCreate").click(function(event){
         event.preventDefault();
         console.log('btnsubmit');
@@ -441,7 +442,7 @@ $(function(){
               country:$('select[name=drpcountry]').val()
             },
             photos: [
-              'photoUrl'
+              {image: photoUrl}
             ]
 
         }
