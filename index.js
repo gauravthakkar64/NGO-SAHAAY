@@ -13,7 +13,7 @@ var cors = require('cors');
 const webapp = express();
 //connect to mongo db
 mong.connect('mongodb://sahaay-admin:sahaaymewithpassword@ngosahaay-shard-00-00-hadfz.mongodb.net:27017,ngosahaay-shard-00-01-hadfz.mongodb.net:27017,ngosahaay-shard-00-02-hadfz.mongodb.net:27017/ngoSahaay?ssl=true&replicaSet=NGOSahaay-shard-0&authSource=admin');
-mong.Promise = global.Promise;
+mong.Promise = Promise;
 
 
 webapp.use(bodyParser.json());
