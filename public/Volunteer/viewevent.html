@@ -164,9 +164,8 @@ $(function(){
 	<script type="text/javascript">
 		
 		$().ready(function(){
-
 			var id = '5ab24f553847d20b60d2e7e9';
-			console.log('/api/events/'+id)
+					console.log('/api/events/'+id)
 			axios.get('/api/events/'+id)
 				.then(function (resp) {
 					console.log(resp.data);

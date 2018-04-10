@@ -91,6 +91,7 @@ router.post('/create', function(req, res){
     Events.create(req.body).then(function (err,data) {
         res.json(data);
     }).catch(err=>{
+        console.log(err)
         res.status(404).json(err);
     });
 });

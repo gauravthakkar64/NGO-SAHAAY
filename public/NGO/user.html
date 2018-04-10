@@ -150,7 +150,14 @@
                     </div>
                 </div>
             </nav>
-            <div class="content">
+            <div class="content" id="templateContent">
+                <center>
+                    <h2 id="loading">Loading...</h2>
+                </center>
+
+            </div>
+
+            <script id="profileTemplate" type="text/x-handlebars-template">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-8">
@@ -165,41 +172,39 @@
                                             <div class="col-md-5">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Company (disabled)</label>
-                                                    <input type="text" class="form-control" disabled>
+                                                    <input type="text" 
+                                                    value="{{name}}" 
+                                                    name="company"
+                                                    class="form-control" disabled>
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Username</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" 
+                                                    value="{{uniqueId}}" 
+                                                    name="uniqueId"
+                                                    class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Email address</label>
-                                                    <input type="email" class="form-control">
+                                                    <input type="email" 
+                                                    value="{{email}}" 
+                                                    name="email"
+                                                    class="form-control">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Fist Name</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Last Name</label>
-                                                    <input type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Adress</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" 
+                                                    value="{{address.street}}" 
+                                                    name="street"class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -207,19 +212,27 @@
                                             <div class="col-md-4">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">City</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" 
+                                                    value="{{address.city}}" 
+                                                    name="city"
+                                                    class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Country</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" 
+                                                    value="{{address.country}}" 
+                                                    name="country"class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Postal Code</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" 
+                                                    value="{{address.pincode}}" 
+                                                    name="pincode"
+                                                    class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -229,12 +242,19 @@
                                                     <label>About Me</label>
                                                     <div class="form-group label-floating">
                                                         <label class="control-label"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                                                        <textarea class="form-control" rows="5"></textarea>
+                                                        <textarea class="form-control" 
+                                                                  rows="5"
+                                                                  id="aboutUs">
+                                                            {{aboutUs}}
+                                                        </textarea>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                                        <button id="btnCreate" 
+                                                class="btn btn-primary pull-right"
+                                                type="button"
+                                                onclick="update()">Update</button>
                                         <div class="clearfix"></div>
                                     </form>
                                 </div>
@@ -259,7 +279,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </script>
+
+
+
+
             <footer class="footer">
                 <div class="container-fluid">
                     <nav class="pull-left">
@@ -316,5 +340,64 @@
 <script src="../assets/js/material-dashboard.js?v=1.2.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/js/demo.js"></script>
+
+<script src="../assets/js/handlebars-v4.0.11.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" >
+    
+</script>
+
+<script type="text/javascript">
+        
+        $().ready(function(){
+            var id = '8676318';
+            console.log('/api/events/'+id)
+            
+            axios.get('/api/ngo/fetch/'+id)
+                .then(function (resp) {
+                    console.log(resp.data);
+                    var source   = document.getElementById('profileTemplate').innerHTML;
+                    var template = Handlebars.compile(source);
+                    $("#templateContent").html(template(resp.data));
+                    //$("#allEvent").modal()
+                })
+                .catch(function (error) {
+                    $("#loading").html('Unable To load.');
+                    console.log(error);
+                });
+            
+    });
+
+    function update(event){
+            var id = '8676318';
+            console.log('update');
+            var ngoData ={
+                name: $("input[name=company]").val(),
+                email: $('[name="email"]').val(),     
+                address: {
+                  street: $("input[name=street]").val(),
+                  city: $('input[name=city]').val(),
+                  state: $('input[name=state]').val(),
+                  country:$('input[name=country]').val(),
+                  pincode: $('input[name=pincode]').val()
+                },
+                aboutUs: $('#aboutUs').val()
+            }
+            console.log(ngoData);
+
+            
+            axios.patch('/api/ngo/update/'+id, ngoData)
+                 .then(function (resp) {
+                    console.log(resp.data);
+                    alert('Updated');
+                 })
+                 .catch(function (error) {
+                    console.log(error);
+                    alert('Update Failed');
+                 }
+            );
+
+    }    
+
+</script>
 
 </html>
