@@ -33,6 +33,10 @@ const volunteerSchema = new Schema({
     upcomingEvents:{
         type:[Schema.Types.ObjectId],
         ref:'Events'
+    },
+    certificates:{
+        type:[Schema.Types.ObjectId],
+        ref:'certificate'
     }
 });
 volunteerSchema.methods.setPassword = function(password){
