@@ -417,7 +417,6 @@ $(function(){
 
       fileReader.onload = function(fileLoadedEvent) {
         var srcData = fileLoadedEvent.target.result; // <--- data: base64
-        alert("Converted Base64 version is " + srcData);
         photoUrl = srcData;
       }
       fileReader.readAsDataURL(fileToLoad);
@@ -443,7 +442,8 @@ $(function(){
             },
             photos: [
               {image: photoUrl}
-            ]
+            ],
+            ngoId: ngoId
 
         }
         console.log(eventData);
@@ -451,7 +451,8 @@ $(function(){
 
         axios.post('/api/events/create', eventData)
              .then(function (resp) {
-                alert(resp);
+                alert('event added');
+                console.log(resp)
              })
              .catch(function (error) {
                 console.log(error.data);

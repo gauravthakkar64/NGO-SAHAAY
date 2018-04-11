@@ -44,7 +44,7 @@ $(function(){
 
 
 	            <div id="eventContent" class="container">
-					<center><h2 id="loading">Loading...</h2></center>
+					
 				</div>
 				
 				<!-- template code -->
@@ -181,13 +181,18 @@ $(function(){
 		$().ready(function(){
 			var id = getParameterByName('id')
 			console.log(id)
+
 			axios.get('/api/events/fetch/'+id)
 				.then(function (resp) {
-					console.log(resp.data);
+					console.log(resp);
 					var source   = document.getElementById('eventTemplate').innerHTML;
 					var template = Handlebars.compile(source);
 					$("#eventContent").html(template(resp.data));
-					$("#event-img").css("background-image", "url('"+ resp.data.photos[0].image + "')");
+					
+					if(resp.data.photos[0].image)
+						$("#event-img").css("background-image", "url('"+ resp.data.photos[0].image + "')");  
+					else
+						$("#event-img").css("background-image", "url('../assets/img/bg.jpg')");
 				})
 				.catch(function (error) {
 					$("#loading").html('Invalid Id');

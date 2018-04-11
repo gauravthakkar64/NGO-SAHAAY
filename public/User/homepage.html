@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" href="../assets/img/favicon.png">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Sign Up Page - Material Kit by Creative Tim</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+	<!--     Fonts and icons     -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- CSS Files -->
+	
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../assets/css/material-kit.css" rel="stylesheet"/>
+	<script src="../assets/js/jquery.min.js"> </script>
+<style>
+.imgcontent{
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.content {
+    position: absolute;
+    bottom: 0;
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+}
+
+	
+</style>
+<script> 
+$(function(){
+  $("#headerclass").load("header.html"); 
+  $("#footerclass").load("footer.html");
+});
+</script>  
+<script type="text/javascript">
+	$(document).ready(function(){
+	$("#test2").keyup(function() {
+	    var val = $("#test2").val();
+	    if (parseInt(val) < 0 || isNaN(val)) {
+	        alert("Please Enter Only Numeric Values in Volunteer Id");
+	        $("#test2").val("");
+	        $("#test2").focus();
+	    }
+		});
+	});
+</script>
+<body class="home-page" style="background:white;">
+	<div id="headerclass">
+				
+	</div>
+		<!--header finished-->
+		
+		
+		<!--body of content start-->
+		
+		<div class="wrapper">
+				<div class="container">
+					<!--Slider start-->
+					<div class="row" style="margin-top:100px;">
+						 <div class="card card-raised card-carousel">
+							<div id="myCarousel" class="carousel slide" data-ride="carousel">
+								<ol class="carousel-indicators">
+								  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+								  <li data-target="#myCarousel" data-slide-to="1"></li>
+								  <li data-target="#myCarousel" data-slide-to="2"></li>
+								</ol>
+								<div class="carousel-inner">
+								  <div class="item active">
+									<img src="../assets/img/city.jpg" alt="Los Angeles" style="width:100%;height:400px">
+								  </div>
+
+								  <div class="item">
+									<img src="../assets/img/city.jpg" alt="Chicago" style="width:100%;height:400px">
+								  </div>
+								
+								  <div class="item">
+									<img src="../assets/img/city.jpg" alt="New york" style="width:100%;height:400px">
+								  </div>
+								</div>
+
+								<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+								  <span class="glyphicon glyphicon-chevron-left"></span>
+								  <span class="sr-only">Previous</span>
+								</a>
+								<a class="right carousel-control" href="#myCarousel" data-slide="next">
+								  <span class="glyphicon glyphicon-chevron-right"></span>
+								  <span class="sr-only">Next</span>
+								</a>
+							</div>
+						 </div>
+					</div>
+					<!--slider finished-->
+					
+				</div>	
+				<div class="section">
+						<div class="container-fluid text-center">
+							<div class="row">					
+								<div class="col-md-3">
+									<div class="imgcontent">	
+											<a href="footer.html" target="_blank">
+											  <img src="../assets/img/bg.jpg" alt="event" class="img-rounded" style="width:100%" class="img-raised rounded img-fluid">
+											  <div class="content">
+												<p>Name :this is for ... event</p>
+											  </div>
+											</a>
+									</div>		
+										<a href="viewevent.html" class="btn btn-info" role="button">View More..</a>
+								</div>
+								
+								<div class="col-md-3">
+									<div class="imgcontent">	
+											<a href="footer.html" target="_blank">
+											  <img src="../assets/img/bg.jpg" alt="event" class="img-rounded" style="width:100%" class="img-raised rounded img-fluid">
+											  <div class="content">
+												<p>Name :this is for ... event</p>
+											  </div>
+											</a>
+									</div>		
+										<a href="viewevent.html" class="btn btn-info" role="button">View More..</a>
+								</div>
+								
+								<div class="col-md-3">
+									<div class="imgcontent">	
+											<a href="footer.html" target="_blank">
+											  <img src="../assets/img/bg.jpg" alt="event" class="img-rounded" style="width:100%" class="img-raised rounded img-fluid">
+											  <div class="content">
+												<p>Name :this is for ... event</p>
+											  </div>
+											</a>
+									</div>		
+										<a href="viewevent.html" class="btn btn-info" role="button">View More..</a>
+								</div>
+								<div class="col-md-3">
+									<div class="imgcontent">	
+											<a href="footer.html" target="_blank">
+											  <img src="../assets/img/bg.jpg" alt="event" class="img-rounded" style="width:100%" class="img-raised rounded img-fluid">
+											  <div class="content">
+												<p>Name :this is for ... event</p>
+											  </div>
+											</a>
+									</div>		
+										<a href="viewevent.html" class="btn btn-info" role="button">View More..</a>
+								</div>
+							</div>
+						</div>
+						
+				</div>
+				
+
+				<div class="section section-examples">
+						<div class="container-fluid text-center">
+							<div class="row">
+								<div class="col-md-3">
+									<div class="imgcontent">	
+											<a href="footer.html" target="_blank">
+											  <img src="../assets/img/bg.jpg" alt="event" class="img-rounded" style="width:100%" class="img-raised rounded img-fluid">
+											  <div class="content">
+												<p>Name :this is for ... event</p>
+											  </div>
+											</a>
+									</div>		
+										<a href="viewevent.html" class="btn btn-info" role="button">View More..</a>
+								</div>
+								<div class="col-md-3">
+									<div class="imgcontent">	
+											<a href="footer.html" target="_blank">
+											  <img src="../assets/img/bg.jpg" alt="event" class="img-rounded" style="width:100%" class="img-raised rounded img-fluid">
+											  <div class="content">
+												<p>Name :this is for ... event</p>
+											  </div>
+											</a>
+									</div>		
+										<a href="viewevent.html" class="btn btn-info" role="button">View More..</a>
+								</div>
+								<div class="col-md-3">
+									<div class="imgcontent">	
+											<a href="footer.html" target="_blank">
+											  <img src="../assets/img/bg.jpg" alt="event" class="img-rounded" style="width:100%" class="img-raised rounded img-fluid">
+											  <div class="content">
+												<p>Name :this is for ... event</p>
+											  </div>
+											</a>
+									</div>		
+										<a href="viewevent.html" class="btn btn-info" role="button">View More..</a>
+								</div>
+								<div class="col-md-3">
+									<div class="imgcontent">	
+											<a href="footer.html" target="_blank">
+											  <img src="../assets/img/bg.jpg" alt="event" class="img-rounded" style="width:100%" class="img-raised rounded img-fluid">
+											  <div class="content">
+												<p>Name :this is for ... event</p>
+											  </div>
+											</a>
+									</div>		
+										<a href="viewevent.html" class="btn btn-info" role="button">View More..</a>
+								</div>
+							</div>
+						</div>
+				</div>	
+				
+				<div class="section section-examples">
+						<div class="container-fluid text-center">
+							<div class="row">
+								<div class="col-md-3">
+									<div class="imgcontent">	
+											<a href="footer.html" target="_blank">
+											  <img src="../assets/img/bg.jpg" alt="event" class="img-rounded" style="width:100%" class="img-raised rounded img-fluid">
+											  <div class="content">
+												<p>Name :this is for ... event</p>
+											  </div>
+											</a>
+									</div>		
+										<a href="viewevent.html" class="btn btn-info" role="button">View More..</a>
+								</div>
+								<div class="col-md-3">
+									<div class="imgcontent">	
+											<a href="footer.html" target="_blank">
+											  <img src="../assets/img/bg.jpg" alt="event" class="img-rounded" style="width:100%" class="img-raised rounded img-fluid">
+											  <div class="content">
+												<p>Name :this is for ... event</p>
+											  </div>
+											</a>
+									</div>		
+										<a href="viewevent.html" class="btn btn-info" role="button">View More..</a>
+								</div>
+								<div class="col-md-3">
+									<div class="imgcontent">	
+											<a href="footer.html" target="_blank">
+											  <img src="../assets/img/bg.jpg" alt="event" class="img-rounded" style="width:100%" class="img-raised rounded img-fluid">
+											  <div class="content">
+												<p>Name :this is for ... event</p>
+											  </div>
+											</a>
+									</div>		
+										<a href="viewevent.html" class="btn btn-info" role="button">View More..</a>
+								</div>
+								<div class="col-md-3">
+									<div class="imgcontent">	
+											<a href="footer.html" target="_blank">
+											  <img src="../assets/img/bg.jpg" alt="event" class="img-rounded" style="width:100%" class="img-raised rounded img-fluid">
+											  <div class="content">
+												<p>Name :this is for ... event</p>
+											  </div>
+											</a>
+									</div>		
+										<a href="viewevent.html" class="btn btn-info" role="button">View More..</a>
+								</div>
+							</div>
+						</div>						
+				</div>
+			</div>
+		
+	<!--body content finished-->
+	
+	<div id="footerclass">
+	
+	</div>
+	<!--footer-->
+	
+	<!--footer finished-->
+</body>
+</html>
