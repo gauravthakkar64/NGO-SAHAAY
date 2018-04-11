@@ -33,7 +33,10 @@ $(function(){
 	
 	</div>
     <div class="wrapper">
-		<div class="header header-filter" style="background-image: url('../assets/img/examples/city.jpg'); "></div>
+    	<div    id="event-img"
+    			class="header header-filter">
+
+    	</div>
 
 		<div class="main main-raised">
 			<div class="profile-content">
@@ -65,9 +68,9 @@ $(function(){
 						</div>
 						<div class="col-md-8" style="background-color:#E6DFDF; border-radius:10px; margin-left:30px;">
 														
-							<center><label><font size="20px" style="color:black"> Organized By : {{ngoId}} </font></label><br>
+							<center><label><font size="10px" style="color:black"> Organized By : {{ngoId}} </font></label><br>
 							
-							<label><font size="20px" style="color:black"> Date : {{date}} </font></label><br><br>
+							<label><font size="10px" style="color:black"> Date : {{date}} </font></label><br><br>
 							<br>
 							
 							<form action="viewevent.html" method="post">
@@ -163,17 +166,28 @@ $(function(){
     
 	<script type="text/javascript">
 		
-		$().ready(function(){
+		function getParameterByName(name) {
+		    var url = window.location.href;
+		    name = name.replace(/[\[\]]/g, "\\$&");
+		    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+		        results = regex.exec(url);
+		    if (!results) return null;
+		    if (!results[2]) return '';
+		    return decodeURIComponent(results[2].replace(/\+/g, " "));
+		}
+		
 
-			var id = '5ab24f553847d20b60d2e7e9';
-			console.log('/api/events/'+id)
-			axios.get('/api/events/'+id)
+
+		$().ready(function(){
+			var id = getParameterByName('id')
+			console.log(id)
+			axios.get('/api/events/fetch/'+id)
 				.then(function (resp) {
 					console.log(resp.data);
 					var source   = document.getElementById('eventTemplate').innerHTML;
 					var template = Handlebars.compile(source);
 					$("#eventContent").html(template(resp.data));
-					//$("#allEvent").modal()
+					$("#event-img").css("background-image", "url('"+ resp.data.photos[0].image + "')");
 				})
 				.catch(function (error) {
 					$("#loading").html('Invalid Id');

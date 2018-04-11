@@ -6,9 +6,11 @@ const Events = require('../models/event');
 const mong = require('mongoose');
 
 router.get('/test',function(req,res){
+    res.send("TEST");
 });
 
 router.get('/', function(req, res){
+    res.send(query);
     let query = {};
     if(req.query.city)
         query["venue.city"] = req.query.city
@@ -65,6 +67,37 @@ router.get('/count',function(req,res){
     });
  });
 
+
+//rsvp in a event
+router.post('/rsvp/:id',function(req,res){
+    Events.findOne({_id:req.params.id}).then(event=>{
+        if(event){
+            event.rsvp.push(req.body);
+            event.save();
+            res.status(200).json(event.rsvp);
+        }
+        else{
+            res.status(444).json("No event with given ID found");
+        }
+    }).catch(err=>{
+        res.status(344).json(err);
+    });
+});
+
+//rsvp count of a single event
+router.get('/rsvp/:id',function(req,res){
+    Events.findOne({_id:req.params.id}).then(event=>{
+        if(event){
+            res.status(200).json(event.rsvp.length);
+        }
+        else{
+            res.status(444).json("No event with given ID found");
+        }
+    }).catch(err=>{
+        res.status(344).json(err);
+    });
+});
+
 //create an event
 
 router.post('/create', function(req, res){
@@ -91,6 +124,7 @@ router.post('/create', function(req, res){
     Events.create(req.body).then(function (err,data) {
         res.json(data);
     }).catch(err=>{
+        console.log(err)
         res.status(404).json(err);
     });
 });

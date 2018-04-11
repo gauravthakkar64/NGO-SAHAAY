@@ -4,6 +4,7 @@ const router = express.Router();
 const TOKEN_PRIVATE_KEY = "3sqr"
 const Volunteers = require('../models/volunteer');
 const Events = require('../models/event');
+const Certificate = require('../models/certificates');
 
 
 //get a volunteer from ID
@@ -116,28 +117,30 @@ router.post('/request', function (req, res) {
 // removes from approched and inserts in selected.
 //{"volunteerId":"5ab0ee9444d20419bc457bf2","eventId":"5ac220001709802e60aea2a2"}
 router.post('/approve',function(req,res) {
-    Events.findOne({_id: req.body.eventId}).then(function (event) {
+    Events.findOne({_id: req.body.eventId}).then(function (event,err) {
         if(event){
-            Volunteers.findOne({_id:req.params.volunteerId}).then(function(volunteer){
+            Volunteers.findOne({_id:req.body.volunteerId}).then(function(volunteer,err){
                 if(volunteer){
                     event.volunteersApproched.pull(req.body.volunteerId);
                     event.volunteersSelected.push(req.body.volunteerId);
                     event.save();
                     res.sendStatus(200);
                 }
-                else{
+                else if(!err){
                     res.status(444).json("No volunteer found by the given volunteer ID");        
                 }
-            }.catch(err=>{
-                res.status(344).json(err);
-            }));
+                else{
+                    res.status(344).json(err);    
+                }
+            });
         }
-        else{
+        else if(!err){
             res.status(445).json("No event found by the given event ID");
         }
-    }.catch(err=>{
-        res.status(444).json("No volunteer found by the given volunteer ID");        
-    }));
+        else{
+            res.status(444).json("No volunteer found by the given volunteer ID");        
+        }
+    });
 });
 
 //viewing participated events of volunteer
@@ -186,6 +189,36 @@ router.get('/upcomingParticipatedEvents/:id', function (req, res) {
             });
         } else {
             res.status(444).json("Volunteer not found");
+        }
+    });
+});
+//add certificate to volunteer profile
+router.post("/certificate",function (req,res){
+    Certificate.findOne({uniqueId:req.body.uniqueId}).then(certificate=>{
+        if(certificate){
+            Volunteers.findOne({_id:req.body.volunteerId}).then(obj=>{
+                if(obj){
+                    Volunteers.findOne({certificates:certificate._id}).then(obj1=>{
+                        if(!obj){
+                            
+                            obj.certificates.push(certificate._id);
+                            obj.save();
+                            res.sendStatus(200);
+                        }
+                        else{
+                            res.status(444).json("Certificate already exisits");                
+                        }
+                    });
+                }
+                else{
+                    res.status(444).json("Volunteer not found");
+                }
+            }).catch(err=>{
+                res.status(344).json(err);
+            });
+        }
+        else{
+            res.status(444).json("No Certificate with the given ID found");
         }
     });
 });

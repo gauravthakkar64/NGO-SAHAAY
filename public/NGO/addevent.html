@@ -417,7 +417,6 @@ $(function(){
 
       fileReader.onload = function(fileLoadedEvent) {
         var srcData = fileLoadedEvent.target.result; // <--- data: base64
-        alert("Converted Base64 version is " + srcData);
         photoUrl = srcData;
       }
       fileReader.readAsDataURL(fileToLoad);
@@ -425,6 +424,7 @@ $(function(){
   }
 
   $().ready(function(){
+      var ngoId = "5ab7a12117f80f169302a9bc";
       $("#btnCreate").click(function(event){
         event.preventDefault();
         console.log('btnsubmit');
@@ -441,8 +441,9 @@ $(function(){
               country:$('select[name=drpcountry]').val()
             },
             photos: [
-              'photoUrl'
-            ]
+              {image: photoUrl}
+            ],
+            ngoId: ngoId
 
         }
         console.log(eventData);
@@ -450,7 +451,8 @@ $(function(){
 
         axios.post('/api/events/create', eventData)
              .then(function (resp) {
-                alert(resp);
+                alert('event added');
+                console.log(resp)
              })
              .catch(function (error) {
                 console.log(error.data);

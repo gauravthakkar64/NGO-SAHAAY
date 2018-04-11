@@ -77,34 +77,42 @@ $(function(){
   
 });
 </script> 
+
+
+<link href="../pagination/demo/Content/bootstrap.min.css" rel="stylesheet">
+<link href="../pagination/demo/css/jquery.dataTables_themeroller.css" rel="stylesheet">
+    
+
 </head>
 
 <body>
+
     <div class="wrapper">
         <div id="sidebarclass">
 		
 		</div>
         <div class="main-panel">
-            <div id="headerclass">
-		
-			</div>
-            <div class="content">
+           <div id="headerclass">
+		   
+		   </div>
+            <div class="content" style="margin-top:5px;">
                 <div class="container-fluid">
                     <div class="row">                        
                         <div class="col-md-12">
                             <div class="card card-plain">
                                 <div class="card-header" data-background-color="purple">
-                                    <h4 class="title">Past Events</h4>
+                                    <h2 class="title"><center>All Events</center></h2>
                                     <!--<p class="category">Here is a subtitle for this table</p>-->
                                 </div>
                                 <div class="card-content table-responsive">
-                                    <table class="table table-hover">
-                                        <thead>                                    
-                                            <th>Past Events</th>
+                                    <table id="dataTable" class="table table-hover">
+                                        <thead>                                            
+                                            <th>Event Name</th>
                                             <th>Date</th>
-											                       <th>City</th>                          
+											                   <th>City</th>                                            
                                             <th>State</th>
-											                      <th>NGO</th>
+											<th>NGO</th>
+											<th>View Event</th>
                                         </thead>
                                         <tbody id="eventContent">
                                           
@@ -118,22 +126,61 @@ $(function(){
                                                         <td>{{venue.city}}</td>
                                                         <td>{{venue.state}}</td>
                                                         <td>{{ngoId}}</td>
+                                                        <td>
+                                                          <a href="singleevent.html?id={{_id}}">
+                                                            <button type="button" name="txtview" 
+                                                                    value="View Event" 
+                                                                    class="btn btn-info" 
+                                                                    style="border-radius:10px;">
+                                                                    View Event</button>
+                                                          </a>
+                                                        </td>  
                                                         </tr>
                                                     {{/each}}
                                         </script>
+												                          							
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>                            
                         </div>
                     </div>
                 </div>
-               
+                
             </div>
-            <div id="footerclass">
-			
-			</div>
+           <div id="footerclass">
+		   
+		   </div>
         </div>
     </div>
+	
+<script>
+
+       $(function () {
+
+            $('#dataTable').dataTable({
+               // "bJQueryUI": true,
+                "sPaginationType": "full_numbers",
+				//"pageLength": 1
+            });
+
+            $('#chk-all').click(function () {
+                if ($(this).is(':checked')) {
+                    $('#responsiveTable').find('.chk-row').each(function () {
+                        $(this).prop('checked', true);
+                        $(this).parent().parent().parent().addClass('selected');
+                    });
+                }
+                else {
+                    $('#responsiveTable').find('.chk-row').each(function () {
+                        $(this).prop('checked', false);
+                        $(this).parent().parent().parent().removeClass('selected');
+                    });
+                }
+            });
+        });
+
+</script>
 </body>
 <!--   Core JS Files   -->
 <script src="../assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
@@ -153,14 +200,17 @@ $(function(){
 <script src="../assets/js/material-dashboard.js?v=1.2.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/js/demo.js"></script>
+
+<script src="../pagination/demo/Scripts/bootstrap.min.js"></script>
+<script src='../pagination/demo/js/jquery.dataTables.min.js'></script>
+
 <script src="/assets/js/handlebars-v4.0.11.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" type="text/javascript"></script>
     
   <script type="text/javascript">
     
     $().ready(function(){
-      console.log('/api/events/past')
-      axios.get('/api/events/past')
+      axios.get('/api/events/upcoming')
         .then(function (resp) {
           console.log(resp.data);
           var source   = document.getElementById('eventTemplate').innerHTML;
@@ -176,4 +226,5 @@ $(function(){
        });
 
   </script>
+
 </html>

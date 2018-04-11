@@ -2,6 +2,11 @@ const mong = require('mongoose');
 const Schema = mong.Schema;
 const addressSchema = require('./address');
 const imageSchema = require('./photo');
+const rsvpSchema = new Schema({
+    email:String,
+    attendees:Number
+});
+
 const eventSchema = new Schema({
     ngoId:{
         type:Schema.Types.ObjectId,
@@ -12,6 +17,7 @@ const eventSchema = new Schema({
         type: String,
         required: [true, "Ngo name is required"]  
     },
+    description:String,
     date: {
         type: Date,
         required: false
@@ -32,7 +38,10 @@ const eventSchema = new Schema({
     volunteerRequests:[{
         type: Schema.Types.ObjectId,
         ref: 'volunteer'
-    }]
+    }],
+    rsvp:[rsvpSchema]
 });
+
+
 const Events = mong.model('Events', eventSchema);
 module.exports = Events;

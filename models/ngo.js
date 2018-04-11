@@ -2,6 +2,7 @@ const mong = require('mongoose');
 const crypto = require('crypto');
 const eventSchema = require('./event');
 const addressSchema = require('./address');
+const blogSchema = require('./blog');
 const imageSchema = require('./photo');
 const Schema = mong.Schema
 
@@ -36,7 +37,9 @@ const ngoSchema = new Schema({
     service:{
         type: String,
     },
+    blog:[blogSchema],
     logo: String,
+    donationLink: String,
     photo:[imageSchema],
     teamSize: Number,
     aboutUs: String,
@@ -49,6 +52,7 @@ const ngoSchema = new Schema({
         officeNumber: String,
         faxNo: String
     },
+    about:String,
     points:Number,
     pastEvents:{
         type:[Schema.Types.ObjectId],

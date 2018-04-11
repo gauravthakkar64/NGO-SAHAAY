@@ -22,6 +22,19 @@ router.get('/fetch/:id', function (req, res, next) {
     });
 });
 
+router.get('/fetchbyemail/:email', function (req, res, next) {
+    Ngo.findOne({
+        email: req.params.email
+    }).then(function (data) {
+        if(data){
+            res.status(200).json(data);
+        }
+        else{
+            res.status(444).json("email exists");
+        }
+    });
+});
+
  //total NGO count
  router.get('/count',function(req,res){
     Ngo.find().then(objs=>{
