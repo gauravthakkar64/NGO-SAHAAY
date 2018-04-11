@@ -32,7 +32,14 @@ const eventSchema = new Schema({
     volunteerRequests:[{
         type: Schema.Types.ObjectId,
         ref: 'volunteer'
-    }]
+    }],
+    rsvp:[rsvpSchema]
 });
+
+const rsvpSchema = new Schema({
+    email:String,
+    attendees:Number
+});
+
 const Events = mong.model('Events', eventSchema);
 module.exports = Events;
