@@ -4,6 +4,7 @@ const authRoutes = require("./routes/auth");
 const eventsRoutes = require("./routes/events");
 const volunteerRoutes = require("./routes/volunteers");
 const ngoRoutes = require("./routes/ngo");
+const blogRoutes = require("./routes/blog");
 
 const bodyParser = require('body-parser');
 const mong = require("mongoose");
@@ -35,6 +36,7 @@ webapp.use('/api',routes);
 webapp.use('/api/auth', authRoutes);
 webapp.use('/api/events', eventsRoutes);
 webapp.use('/api/volunteers', volunteerRoutes);
+webapp.use('/api/blog', blogRoutes);
 // webapp.use('/api/events', eventsRoutes);
 webapp.use('/api/ngo', ngoRoutes);
 
