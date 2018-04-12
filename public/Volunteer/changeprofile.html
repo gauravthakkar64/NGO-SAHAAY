@@ -136,8 +136,15 @@ function allLetter(txtname)
            <div id="headerclass">
 		   
 		   </div>
-            <div class="content" style="margin-top:5px;">
-                <div class="container-fluid">
+            <div class="content" id="templateContent" style="margin-top:5px;">
+                <center>
+                    <h2 id="loading">Loading...</h2>
+                </center>
+
+            </div>
+
+            <script id="profileTemplate" type="text/x-handlebars-template">
+            	<div class="container-fluid">
                     <div class="row">                        
                         <div class="col-md-12">
                             <div class="card card-plain">
@@ -155,7 +162,7 @@ function allLetter(txtname)
 										<span class="input-group-addon">
 											<i class="material-icons">face</i>
 										</span>
-										<input type="text" class="form-control" name="txtname" placeholder="First Name" onblur="return allLetter(txtname);" value="Priyansh"  required/>
+										<input type="text" class="form-control" name="txtname" placeholder="First Name" onblur="return allLetter(txtname);" value="{{name}}"  required/>
 									</div>
 																	
 									<div class="input-group">
@@ -163,7 +170,7 @@ function allLetter(txtname)
 											<i class="material-icons">smartphone</i>
 										</span>
 										
-										<input type="text" id="test21" class="form-control" placeholder="Mobile Number" name="txtmobile" value="12" required/>
+										<input type="text" id="test21" class="form-control" placeholder="Mobile Number" name="txtmobile" value="{{contactNumber}}" required/>
 									</div>
 									
 									<div class="input-group">
@@ -171,7 +178,8 @@ function allLetter(txtname)
 											<i class="material-icons">smartphone</i>
 										</span>
 										
-										<input type="text" id="test22" class="form-control" name="txtweekly" placeholder="Weekly Hours" value="8905106525" required/>
+										<input type="text" id="test22" class="form-control" name="txtweekly" placeholder="Weekly Hours" value="{{weeklyHours
+									}}" required/>
 									</div>
 										
 									
@@ -184,7 +192,8 @@ function allLetter(txtname)
 											<i class="material-icons">domain</i>
 										</span>
 										<label style="float:left;margin-top:20px;margin-right:20px;">Photo</label>
-										<input type="file" type="form-control-file" name="txtlogo" style="margin-top:20px;" required/>
+										<input type="file" id="inputFileToLoad" type="form-control-file" name="txtlogo" style="margin-top:20px;" 
+										onchange="encodeImageFileAsURL();"required/>
 									</div>
 									
 									<div class="input-group">
@@ -194,11 +203,12 @@ function allLetter(txtname)
 										<label style="float:left;margin-top:20px;margin-right:20px;">Intrestes</label>
 										<div class="checkbox">
 										<label>
-											<input type="checkbox" name="check1" value="Management">Management
-											<input type="checkbox" name="check2" value="Volunteer">Volunteer
-											<input type="checkbox" name="check3" value="Helper">Helper											
-											<input type="checkbox" name="check1" value="Management">Management
+											{{#each interests}}
+
+											<input type="checkbox" name="check1" 
+												   value="{{this}}">{{this}}
 											
+											{{/each}}
 										</label>
 										</div>
 										
@@ -218,7 +228,7 @@ function allLetter(txtname)
 										<span class="input-group-addon">
 											<i class="material-icons">today</i>
 										</span>											
-										<select class="form-control" name="txtcountry" style="float:left;">
+										<select class="form-control" name="txtcity" style="float:left;">
 										<option>City</option>
 										<option value="Ahmedabad">Ahmedabad</option>
 										</select>
@@ -226,7 +236,8 @@ function allLetter(txtname)
 									
 								</div>
 								<div class="footer text-center col-md-12">
-									<input type="submit" name="txtupdate" value="Update" class="btn btn-primary">
+									<input type="button" name="txtupdate" 
+										   onclick="update()" value="Update" class="btn btn-primary">
 								</div>
 								</form>
 								
@@ -234,8 +245,7 @@ function allLetter(txtname)
                         </div>
                     </div>
                 </div>
-                
-            </div>
+            </script>
            <div id="footerclass">
 		   
 		   </div>
@@ -291,6 +301,86 @@ function allLetter(txtname)
 
 <script src="../pagination/demo/Scripts/bootstrap.min.js"></script>
 <script src='../pagination/demo/js/jquery.dataTables.min.js'></script>
+
+
+<script src="../assets/js/handlebars-v4.0.11.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" >
+    
+</script>
+
+<script type="text/javascript">
+        var photoUrl = "";
+		  function encodeImageFileAsURL() {
+
+		    var filesSelected = document.getElementById("inputFileToLoad").files;
+		    if (filesSelected.length > 0) {
+		      var fileToLoad = filesSelected[0];
+
+		      var fileReader = new FileReader();
+
+		      fileReader.onload = function(fileLoadedEvent) {
+		        var srcData = fileLoadedEvent.target.result; // <--- data: base64
+		        photoUrl = srcData;
+		        alert(photoUrl)
+		      }
+		      fileReader.readAsDataURL(fileToLoad);
+		    }
+		  }
+
+
+        $().ready(function(){
+            var id = '5ac8d45d0914cf130872f99d';
+            axios.get('/api/volunteers/fetch/'+id)
+                .then(function (resp) {
+                    console.log(resp.data);
+                    var source   = document.getElementById('profileTemplate').innerHTML;
+                    var template = Handlebars.compile(source);
+                    $("#templateContent").html(template(resp.data));
+                    //$("#allEvent").modal()
+                })
+                .catch(function (error) {
+                    $("#loading").html('Unable To load.');
+                    console.log(error);
+                });
+            
+    });
+
+    function update(event){
+    		//event.preventDefault();
+            var id = '5ac8d45d0914cf130872f99d';
+            console.log(photoUrl);
+            var data ={
+                name: $("input[name=txtname]").val(),
+                address: {
+                  city: $('select[name=txtcity]').val(),
+                  state: $('select[name=txtstate]').val(),
+                },
+                interest: [
+                	'volunteer'
+                ],
+                contactNumber: $('input[name=txtmobile]').val(),
+                weeklyHours: $('input[name=txtweekly]').val(),
+                photos: [
+	              {image: photoUrl}
+	            ]
+            }
+            console.log(data);
+
+            
+            axios.patch('/api/volunteers/update/'+id, data)
+                 .then(function (resp) {
+                    console.log(resp.data);
+                    alert('Updated');
+                 })
+                 .catch(function (error) {
+                    console.log(error);
+                    alert('Update Failed');
+                 }
+            );
+
+    }    
+
+</script>
 
 
 </html>
