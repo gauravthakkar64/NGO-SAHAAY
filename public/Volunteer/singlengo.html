@@ -98,7 +98,7 @@ $(function(){
            <div id="headerclass">
 		   
 		   </div>
-		   <div class="row" style="width:90%; height:400px; margin-left:50px;">
+		   <div class="row" style="width:90%; height:400px; margin-left:50px; margin-top:50px;">
 						 <div class="card card-raised card-carousel">
 							<div id="myCarousel" class="carousel slide" data-ride="carousel">
 								<ol class="carousel-indicators">
@@ -146,42 +146,103 @@ $(function(){
                                 </div>
 								<br>
 								<br>
+								<div class="col-md-12">
+								<br>
+									<div style="background-color:#E6DFDF; border-radius:10px;">
+										<center><h4><b>NGO Name Details </b></h4><br></center>
+										
+										<label><font style="color:black"><b>About NGO Name :  </b>
+										aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+										bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb										
+										aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+										bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb										
+										aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+										bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+										</font></label><br>
+										
+									</div>
+								</div>
 
-							{{#each events}}
-							<div class="col-md-12">
-							<br>
+							
+			<div class="row">
+				<div class="col-md-12">
+					<div class="profile-tabs">
+						<div class="nav-align-center">
+							<ul class="nav nav-pills" role="tablist">        
+							<li>
+							<a href="#up" role="tab" data-toggle="tab">
+							<i class="material-icons">palette</i>
+							Upcomming Events
+							</a>
+							</li>   
+							
+							<li>
+							<a href="#past" role="tab" data-toggle="tab">
+							<i class="material-icons">palette</i>
+							Past Events 
+							</a>
+							</li>  							
+							</ul>
+
+							<div class="tab-content gallery">
+								<div class="tab-pane text-center" id="up">
+									<div class="row">
+										<div class="col-md-12">
+									<br>
 									<div style="background-color:#E6DFDF; border-radius:10px;" class="col-md-3">
 										<center><h4><b>Venue </b></h4><br></center>
 										
-										<label><font style="color:black">Street Name :  {{venue.street}}</font></label><br>
-										<label><font style="color:black">City Name : {{venue.city}} </font></label><br>
-										<label><font style="color:black">State Name : {{venue.state}} </font></label><br>
-										<label><font style="color:black">Country Name : {{venue.country}}</font></label><br>
-										<label><font style="color:black">Pincode : {{venue.pincode}} </font></label><br>
+										<label><font style="color:black">Street Name :  aaaa</font></label><br>
+										<label><font style="color:black">City Name : aaaa</font></label><br>
+										<label><font style="color:black">State Name : aaa</font></label><br>
+										<label><font style="color:black">Country Name : aaa</font></label><br>
+										<label><font style="color:black">Pincode : aaa </font></label><br>
 									</div>
 									<div class="col-md-7" style="background-color:#E6DFDF; border-radius:10px; margin-left:30px;">
 																	
-										<label><font size="6px" style="color:black"> Event Name : {{name}} </font></label><br>
+										<label><font size="5px" style="color:black" float:> Event Name : aaa </font></label><br>
 										
-										<label><font size="6px" style="color:black"> Date : {{date}} </font></label><br><br>
-										
-										<center><a href="singleevent.html?id={{_id}}"><button style="border-radius:10px;" type="submit" class="btn btn-primary" name="btnview" value="View Event">View Event</button></a></center>
+										<label><font size="5px" style="color:black"> Date : aaa </font></label><br><br>
 										<br>
+										<center><a href="singleevent.html"><button style="border-radius:10px;" type="submit" class="btn btn-primary" name="btnview" value="View Event">View Event</button></a></center>
 										
-										<center>
-										
-										</center>
 									</div>
 							
-							</div>
-							{{else}}
-								<div>
-									<center><h2>Ngo has no events.</h2></center>
+									</div>										
+									</div>
 								</div>
-							{{/each}}
-							       
+								
+								<div class="tab-pane text-center" id="past">
+									<div class="row">
+										<div class="col-md-12">
+									<br>
+									<div style="background-color:#E6DFDF; border-radius:10px;" class="col-md-3">
+										<center><h4><b>Venue </b></h4><br></center>
+										
+										<label><font style="color:black">Street Name :  bbbb</font></label><br>
+										<label><font style="color:black">City Name : aaaa</font></label><br>
+										<label><font style="color:black">State Name : aaa</font></label><br>
+										<label><font style="color:black">Country Name : aaa</font></label><br>
+										<label><font style="color:black">Pincode : aaa </font></label><br>
+									</div>
+									<div class="col-md-7" style="background-color:#E6DFDF; border-radius:10px; margin-left:30px;">
+																	
+										<label><font size="5px" style="color:black" float:> Event Name : aaa </font></label><br>
+										
+										<label><font size="5px" style="color:black"> Date : aaa </font></label><br><br>
+										<br>
+										<center><a href="singleevent.html"><button style="border-radius:10px;" type="submit" class="btn btn-primary" name="btnview" value="View Event">View Event</button></a></center>
+										
+									</div>
 							
-                
+									</div>										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
 		        	    </div>
 		        	</div>
 		    	</div>

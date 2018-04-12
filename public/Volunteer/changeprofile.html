@@ -201,16 +201,15 @@ function allLetter(txtname)
 											<i class="material-icons">local_laundry_service</i>
 										</span>
 										<label style="float:left;margin-top:20px;margin-right:20px;">Intrestes</label>
+										
+										{{#each interests}}
 										<div class="checkbox">
-										<label>
-											{{#each interests}}
-
-											<input type="checkbox" name="check1" 
-												   value="{{this}}">{{this}}
-											
-											{{/each}}
-										</label>
+											<label>
+											<input type="checkbox" value="{{this}}" name="check2">
+											{{this}}
+											</label>
 										</div>
+										{{/each}}
 										
 									</div>
 									<div class="input-group">
