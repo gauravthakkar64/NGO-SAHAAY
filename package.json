@@ -19,7 +19,10 @@
     "express": "^4.16.2",
     "jsonwebtoken": "^8.2.0",
     "mongoose": "^5.0.1",
-    "nodemon": "^1.14.11"
+    "nodemailer": "^4.6.4",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "nodemon": "^1.14.11",
+    "xoauth2": "^1.2.0"
   },
   "devDependencies": {
     "nodemon": "^1.14.11"

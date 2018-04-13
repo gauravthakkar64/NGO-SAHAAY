@@ -254,6 +254,7 @@ router.get('/forgot', function(req, res){
     
  });
 
+//creates token to reset password
 router.post('/forgot',function(req,res,next){
     async.waterfall([
         function(done){
@@ -346,8 +347,8 @@ router.get('/reset/:token', function(req, res) {
           }
           if(req.body.password === req.body.confirm) {
              
-                
-              user.temppassword=req.body.password;
+              console.log('-----'+ user +'---------')
+              user.setPassword(req.body.password);
               user.save(function(err){  
                   if(err)
                   {
@@ -363,6 +364,7 @@ router.get('/reset/:token', function(req, res) {
               
           } else {
             console.log("password not macth");
+            res.json('password  do not match')
           }
           console.log(user);
           console.log(done);
@@ -403,6 +405,23 @@ router.get('/reset/:token', function(req, res) {
   });
   
 
+router.post('/login', (req, res)=>{
+    Volunteers.findOne({email: req.body.email}, function(err, user){
+        if(!err && user){
+            console.log(user);
+            if(user.validPassword(req.body.password)){
+                res.status(200).json({msg: 'login'})
+                //dosomething
+            }
+            else{
+                res.status(404).json({msg: 'invalid credentials(password)'})
+            }
+        }
+        else{
+                res.status(404).json({msg: 'email does not exist.'})
+        }
+    });
+})
   
 
 module.exports = router;
