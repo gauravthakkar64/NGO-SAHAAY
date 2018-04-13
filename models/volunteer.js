@@ -37,7 +37,12 @@ const volunteerSchema = new Schema({
     certificates:{
         type:[Schema.Types.ObjectId],
         ref:'certificate'
-    }
+    },
+    resetPasswordToken: String,
+    resetPasswordExpires: Date,
+    temppassword:String
+
+
 });
 volunteerSchema.methods.setPassword = function(password){
     console.log('password ' + password);
