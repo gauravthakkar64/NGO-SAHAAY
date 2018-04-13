@@ -74,7 +74,7 @@ $(function(){
 							<br>
 							
 							<form action="viewevent.html" method="post">
-								<input style="border-radius:10px;" type="submit" class="btn btn-primary" name="btnadd" value="RSVP">						
+								<input id="btnRsvp" style="border-radius:10px;" type="button" onclick="rsvp()" class="btn btn-primary" name="btnadd" value="RSVP">						
 							</form>
 							</center>
 						</div>
@@ -176,6 +176,7 @@ $(function(){
 		    return decodeURIComponent(results[2].replace(/\+/g, " "));
 		}
 		
+		var currentEvent = {};
 
 
 		$().ready(function(){
@@ -185,6 +186,7 @@ $(function(){
 			axios.get('/api/events/fetch/'+id)
 				.then(function (resp) {
 					console.log(resp);
+					currentEvent = resp.data;
 					var source   = document.getElementById('eventTemplate').innerHTML;
 					var template = Handlebars.compile(source);
 					$("#eventContent").html(template(resp.data));
@@ -198,8 +200,27 @@ $(function(){
 					$("#loading").html('Invalid Id');
 					console.log(error);
 				});		
-			
-		   });
+
+
+		 });
+
+		function rsvp(){
+				console.log(event)
+				var data = {
+					email: 'emai@mail.com',
+					attendees: 10
+				}
+
+				axios.post('/api/events/rsvp/'+currentEvent._id, data)
+				.then(function (resp) {
+					console.log(resp.data);
+					alert('registered')
+				})
+				.catch(function (error) {
+					alert('unable to register')
+					console.log(error)
+				});			
+			}
 
 	</script>
 </html>

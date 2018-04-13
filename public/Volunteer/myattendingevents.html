@@ -77,37 +77,42 @@ $(function(){
   
 });
 </script> 
+
+
 <link href="../pagination/demo/Content/bootstrap.min.css" rel="stylesheet">
 <link href="../pagination/demo/css/jquery.dataTables_themeroller.css" rel="stylesheet">
+    
 
 </head>
 
 <body>
+
     <div class="wrapper">
         <div id="sidebarclass">
 		
 		</div>
         <div class="main-panel">
-            <div id="headerclass">
-		
-			</div>
-            <div class="content" style="margin-top:5px;">
+           <div id="headerclass">
+		   
+		   </div>
+          <div class="content">
                 <div class="container-fluid">
                     <div class="row">                        
                         <div class="col-md-12">
                             <div class="card card-plain">
                                 <div class="card-header" data-background-color="purple">
-                                    <h4 class="title">Past Events</h4>
+                                    <h4 class="title"><center>My Upcomming Events</center></h4>
                                     <!--<p class="category">Here is a subtitle for this table</p>-->
                                 </div>
                                 <div class="card-content table-responsive">
-                                    <table class="table table-hover" id="dataTable">
-                                        <thead>                                            
+                                    <table class="table table-hover">
+                                        <thead>                                    
                                             <th>Past Events</th>
                                             <th>Date</th>
-											<th>City</th>                                            
+                                            <th>City</th>                          
                                             <th>State</th>
-											<th>NGO</th>
+                                            <th>NGO</th>
+                                            <th>View Event</th>
                                         </thead>
                                         <tbody id="eventContent">
                                           
@@ -121,6 +126,15 @@ $(function(){
                                                         <td>{{venue.city}}</td>
                                                         <td>{{venue.state}}</td>
                                                         <td>{{ngoId}}</td>
+                                                        <td>
+                                                          <a href="singleevent.html?id={{_id}}">
+                                                            <button type="button" name="txtview" 
+                                                                    value="View Event" 
+                                                                    class="btn btn-info" 
+                                                                    style="border-radius:10px;">
+                                                                    View Event</button>
+                                                          </a>
+                                                        </td>  
                                                         </tr>
                                                     {{/each}}
                                         </script>
@@ -132,11 +146,12 @@ $(function(){
                 </div>
                
             </div>
-            <div id="footerclass">
-			
-			</div>
+           <div id="footerclass">
+		   
+		   </div>
         </div>
     </div>
+	
 <script>
 
        $(function () {
@@ -211,4 +226,5 @@ $(function(){
        });
 
   </script>
+
 </html>

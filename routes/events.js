@@ -10,7 +10,7 @@ router.get('/test',function(req,res){
 });
 
 router.get('/', function(req, res){
-    res.send(query);
+    //res.send(query);
     let query = {};
     if(req.query.city)
         query["venue.city"] = req.query.city

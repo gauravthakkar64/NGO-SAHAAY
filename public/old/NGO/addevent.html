@@ -227,51 +227,6 @@ $(function(){
   
 });
 </script> 
-
-<script type="text/javascript">
-function allLetter(txteventname)
-{
-	var letters=/^[A-Za-z]+$/;
-	if(txteventname.value.match(letters))
-	{
-		return true;
-	}
-	else
-	{		
-		txteventname.value="";
-		txteventname.focus();
-		alert('Event Name must have Alphabetic characters only');
-		return false;
-	}
-}
-</script>
-
-<script type="text/javascript">
-	$(document).ready(function(){
-	$("#test20").keyup(function() {
-	    var val = $("#test20").val();
-	    if (parseInt(val) < 0 || isNaN(val)) {
-	        alert("Please Enter Only Numeric Values in Days");
-	        $("#test20").val("");
-	        $("#test20").focus();
-	    }
-		});
-	});
-</script>
-<script type="text/javascript">
-	$(document).ready(function(){
-	$("#test21").keyup(function() {
-	    var val = $("#test21").val();
-	    if (parseInt(val) < 0 || isNaN(val)) {
-	        alert("Please Enter Only Numeric Values in Volunteer Size");
-	        $("#test21").val("");
-	        $("#test21").focus();
-	    }
-		});
-	});
-</script>
-
-
 </head>
 
 <body>
@@ -283,22 +238,23 @@ function allLetter(txteventname)
             <div id="headerclass">
 			
 			</div>
-            <div class="content" style="margin-top:100px;">
+            <div class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-8">
                             <div class="card">
                                 <div class="card-header" data-background-color="purple">
                                     <h4 class="title">Add Event</h4>
                                     <p class="category">Add new Event</p>
                                 </div>
                                 <div class="card-content">
-                                    <form action="addevent.html" method="POST">
+                                    <form action="/api/events/create" method="POST">
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Event Name</label>
-                                                    <input type="text" name="name" onblur="return allLetter(txteventname);" class="form-control" required/>
+                                                    <input type="text" 
+                                                    value="sahaay" name="name" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-3">
@@ -310,7 +266,8 @@ function allLetter(txteventname)
                                             <div class="col-md-4">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Total Days</label>
-                                                    <input id="test20" type="text" name="totalDays" class="form-control" required/>
+                                                    <input type="number" 
+                                                    value="5" name="totalDays" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -327,12 +284,13 @@ function allLetter(txteventname)
                                             <div class="col-md-6">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Volunteer Size</label>
-                                                    <input type="text" id="test21" class="form-control" name="volunteerSize" required/>
+                                                    <input type="number" class="form-control" 
+                                                    value="5" name="volunteerSize" required/>
                                                 </div>
                                             </div>                                                                                        
                                         </div>
                                         <div class="row">
-                                            <div class="col-md-3">
+                                            <div class="col-md-6">
                                                 <div class="label-floating">
                                                     <label class="control-label">Photo</label>
                                                     <input type="file" 
@@ -341,11 +299,23 @@ function allLetter(txteventname)
                                                     name="photos" required/>
                                                 </div>
                                             </div>
-                                           
-                                            <div class="col-md-9">
+                                            <div class="col-md-6">
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Selct Volunteers</label>
+                                                        <select class="form-control" name="drpselectvolunteer" style="float:left;" required>                                                        
+                                                            <option value="xyz">xyz</option>
+                                                            <option value="abc">abc</option>													
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label">Street</label>
-                                                    <input type="text" name="street" class="form-control" required/>
+                                                    <input type="text" 
+                                                    value="221 baker street"
+                                                    name="street" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -377,18 +347,34 @@ function allLetter(txteventname)
                                                         </select>										
                                                 </div>
                                             </div>
-                                        </div> 
-										<center>
-                                        <button id="btnCreate" class="btn btn-primary pull-right">Add</button></center>
-                                        <div class="clearfix"></div>
+                                        </div>                                        
+                                        <button id="btnCreate" class="btn btn-primary pull-right">Add</button>
+                                        <div class="clearfix"></div>  
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        
+                        <div class="col-md-4">
+                            <div class="card card-profile">
+                                <div class="card-avatar">
+                                    <a href="#pablo">
+                                        <img class="img" src="../assets/img/faces/marc.jpg" />
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h6 class="category text-gray">CEO / Co-Founder</h6>
+                                    <h4 class="card-title">Alec Thompson</h4>
+                                    <p class="card-content">
+                                        Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                                    </p>
+                                    <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div id="imgTest"></div>
             <div id="footerclass">
 			
 			</div>
@@ -414,9 +400,6 @@ function allLetter(txteventname)
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/js/demo.js"></script>
 
-
-<script src="../assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
-<script src="../assets/js/material-kit.js" type="text/javascript"></script>
 
 <script src="../assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
 <script src="../assets/js/material-kit.js" type="text/javascript"></script>

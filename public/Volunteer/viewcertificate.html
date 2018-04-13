@@ -77,48 +77,7 @@ $(function(){
   
 });
 </script> 
-<script type="text/javascript">
-	$(document).ready(function(){
-	$("#test21").keyup(function() {
-	    var val = $("#test21").val();
-	    if (parseInt(val) < 0 || isNaN(val)) {
-	        alert("Please Enter Only Numeric Values in Mobile Number");
-	        $("#test21").val("");
-	        $("#test21").focus();
-	    }
-		});
-	});
-</script>
-<script type="text/javascript">
-	$(document).ready(function(){
-	$("#test22").keyup(function() {
-	    var val = $("#test22").val();
-	    if (parseInt(val) < 0 || isNaN(val)) {
-	        alert("Please Enter Only Numeric Values in Weekly Hours");
-	        $("#test22").val("");
-	        $("#test22").focus();
-	    }
-		});
-	});
-</script>
 
-<script type="text/javascript">
-function allLetter(txtname)
-{
-	var letters=/^[A-Za-z]+$/;
-	if(txtname.value.match(letters))
-	{
-		return true;
-	}
-	else
-	{		
-		txtname.value="";
-		txtname.focus();
-		alert(' Name must have Alphabetic characters only');
-		return false;
-	}
-}
-</script>
 
 <link href="../pagination/demo/Content/bootstrap.min.css" rel="stylesheet">
 <link href="../pagination/demo/css/jquery.dataTables_themeroller.css" rel="stylesheet">
@@ -136,100 +95,59 @@ function allLetter(txtname)
            <div id="headerclass">
 		   
 		   </div>
-            <div class="content" style="margin-top:5px;">
+            <div class="content" style="margin-top:50px;">
                 <div class="container-fluid">
                     <div class="row">                        
                         <div class="col-md-12">
                             <div class="card card-plain">
                                 <div class="card-header" data-background-color="purple">
-                                    <h2 class="title"><center>Change Profile</center></h2>
+                                    <h2 class="title"><center>View All Certificate</center></h2>
                                     <!--<p class="category">Here is a subtitle for this table</p>-->
-                                </div>
+                                </div><br>
 								
-                                
-								<form class="form" method="post" action="changeprofile.html">
-								
-																						
-								<div class="content col-md-6">
-									<div class="input-group">
-										<span class="input-group-addon">
-											<i class="material-icons">face</i>
-										</span>
-										<input type="text" class="form-control" name="txtname" placeholder="First Name" onblur="return allLetter(txtname);" value="Priyansh"  required/>
-									</div>
-																	
-									<div class="input-group">
-										<span class="input-group-addon">
-											<i class="material-icons">smartphone</i>
-										</span>
+									<div style="background-color:#E6DFDF; border-radius:10px;" class="col-md-12">
+									<div class="col-md-6">	
+										<label><font style="color:black" size="5px">Event :  Event Name </font></label><br>
 										
-										<input type="text" id="test21" class="form-control" placeholder="Mobile Number" name="txtmobile" value="12" required/>
-									</div>
-									
-									<div class="input-group">
-										<span class="input-group-addon">
-											<i class="material-icons">smartphone</i>
-										</span>
-										
-										<input type="text" id="test22" class="form-control" name="txtweekly" placeholder="Weekly Hours" value="8905106525" required/>
-									</div>
-										
-									
-									
-								</div>
-								<div class="content col-md-6">	
-									
-									<div class="input-group">
-										<span class="input-group-addon">
-											<i class="material-icons">domain</i>
-										</span>
-										<label style="float:left;margin-top:20px;margin-right:20px;">Photo</label>
-										<input type="file" type="form-control-file" name="txtlogo" style="margin-top:20px;" required/>
-									</div>
-									
-									<div class="input-group">
-										<span class="input-group-addon">
-											<i class="material-icons">local_laundry_service</i>
-										</span>
-										<label style="float:left;margin-top:20px;margin-right:20px;">Intrestes</label>
-										<div class="checkbox">
-										<label>
-											<input type="checkbox" name="check1" value="Management">Management
-											<input type="checkbox" name="check2" value="Volunteer">Volunteer
-											<input type="checkbox" name="check3" value="Helper">Helper											
-											<input type="checkbox" name="check1" value="Management">Management
-											
-										</label>
-										</div>
+										<label><font style="color:black" size="5px">City : Ahmedabad </font></label><br>
 										
 									</div>
-									<div class="input-group">
+									
+									<div class="col-md-6">	
+										<label><font style="color:black" size="5px">Services : Hero </font></label><br>
+										<label><font style="color:black" size="5px">Date : 25-02-1997</font></label><br>
 										
-										<span class="input-group-addon">
-											<i class="material-icons">today</i>
-										</span>											
-										<select class="form-control" name="txtstate" style="float:left;" required>
-										<option>State</option>
-										<option value="Gujarat">Gujarat</option>
-										<option value="Gujarat">Gujarat</option>
-										<option value="Gujarat">Gujarat</option>
-										</select>
-
-										<span class="input-group-addon">
-											<i class="material-icons">today</i>
-										</span>											
-										<select class="form-control" name="txtcountry" style="float:left;">
-										<option>City</option>
-										<option value="Ahmedabad">Ahmedabad</option>
-										</select>
 									</div>
 									
-								</div>
-								<div class="footer text-center col-md-12">
-									<input type="submit" name="txtupdate" value="Update" class="btn btn-primary">
-								</div>
-								</form>
-								
+									<div class="col-md-12">
+										<center><a href="singleevent.html"><button style="border-radius:10px;" type="submit" class="btn btn-primary" name="btnview" value="View Event">View Event</button></a></center>
+										<hr>
+									</div>														
+									</div>
+									
+									
+									<div style="background-color:#E6DFDF; border-radius:10px;" class="col-md-12">
+									<div class="col-md-6">	
+										<label><font style="color:black" size="5px">Event :  Event Name </font></label><br>
+										
+										<label><font style="color:black" size="5px">City : Ahmedabad </font></label><br>
+										
+									</div>
+									
+									<div class="col-md-6">	
+										<label><font style="color:black" size="5px">Services : Hero </font></label><br>
+										<label><font style="color:black" size="5px">Date : 25-02-1997</font></label><br>
+										
+									</div>
+									
+									<div>
+										<center><a href="singleevent.html"><button style="border-radius:10px;" type="submit" class="btn btn-primary" name="btnview" value="View Event">View Event</button></a></center>
+										<br>
+									</div>
+									</div>
+									
+							
+						
                             </div>                            
                         </div>
                     </div>

@@ -29,17 +29,27 @@ $(function(){
 </script>  
 <script type="text/javascript">
 	$(document).ready(function(){
-	$("#test1").keyup(function() {
-	    var val = $("#test1").val();
+	$("#test2").keyup(function() {
+	    var val = $("#test2").val();
 	    if (parseInt(val) < 0 || isNaN(val)) {
 	        alert("Please Enter Only Numeric Values in Volunteer Id");
-	        $("#test1").val("");
-	        $("#test1").focus();
+	        $("#test2").val("");
+	        $("#test2").focus();
 	    }
 		});
 	});
-	
-
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	$("#test3").keyup(function() {
+	    var val = $("#test3").val();
+	    if (parseInt(val) < 0 || isNaN(val)) {
+	        alert("Please Enter Only Numeric Values in Weekly Hours");
+	        $("#test3").val("");
+	        $("#test3").focus();
+	    }
+		});
+	});
 </script>
 
 <script type="text/javascript">
@@ -63,6 +73,9 @@ function allLetter(txtname)
 </head>
 
 <body class="signup-page">
+	
+	<div id="headerclass">
+	</div>
 
 
     <div class="wrapper">
@@ -72,12 +85,12 @@ function allLetter(txtname)
 				
 					<div class="col-md-12">
 						<div class="card card-signup">
-							<form class="form" method="post" action="signup-ngo.html">
+							<form class="form" method="post" action="signup-volunteer.html">
 								
 								<div class="col-md-3"></div>
 								<div class="col-md-6">
 								<div class="header header-primary text-center">
-									<h4>Sign Up</h4>
+									<h4>Sign Up as A Volunteer</h4>
 									<div class="social-line">
 										<a href="#pablo" class="btn btn-simple btn-just-icon">
 											<i class="fa fa-facebook-square"></i>
@@ -93,7 +106,6 @@ function allLetter(txtname)
 								</div>
 								<div class="col-md-3"></div>														
 								<div class="content col-md-6">
-
 									<div class="input-group">
 										<span class="input-group-addon">
 											<i class="material-icons">face</i>
@@ -121,33 +133,13 @@ function allLetter(txtname)
 										</span>
 										<input type="password" placeholder="Confirm Password" class="form-control" name="txtrepassword" required/>
 									</div>
-									
+																	
 									<div class="input-group">
 										<span class="input-group-addon">
-											<i class="material-icons">today</i>
-										</span>											
-										<select class="form-control" name="txtyear" style="float:left;width:20%;" required>
-										<option>Year</option>
-										<option value="2000">2000</option>
-										<option value="2001">2001</option>
-										<option value="2002">2002</option>
-										<option value="2003">2003</option>
-										<option value="2004">2004</option>
-										<option value="2005">2005</option>
-										<option value="2006">2006</option>
-										<option value="2007">2007</option>
-										<option value="2008">2008</option>
-										<option value="2009">2009</option>
-										<option value="2010">2010</option>
-									</select>
-									</div>
-									
-									<div class="input-group">
-										<span class="input-group-addon">
-											<i class="material-icons">domain</i>
+											<i class="material-icons">smartphone</i>
 										</span>
-										<label style="float:left;margin-top:20px;margin-right:20px;">Logo</label>
-										<input type="file" type="form-control-file" name="txtlogo" style="margin-top:20px;" required/>
+										
+										<input type="text" id="test2" class="form-control" name="txtmobile" placeholder="Mobile Number" required/>
 									</div>
 									
 									<div class="input-group">
@@ -155,30 +147,78 @@ function allLetter(txtname)
 											<i class="material-icons">smartphone</i>
 										</span>
 										
-										<input type="text" id="test1" class="form-control" name="txtmobile" placeholder="Mobile Number" required/>
+										<input type="text" id="test3" class="form-control" name="txtweekly" placeholder="Weekly Hours" required/>
 									</div>
-														
-								</div>
-								<div class="content col-md-6">
+										
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">domain</i>
+										</span>
+										<label style="float:left;margin-top:20px;margin-right:20px;">Photo</label>
+										<input type="file" type="form-control-file" name="txtlogo" style="margin-top:20px;" required/>
+									</div>
+									
 									<div class="input-group">
 										<span class="input-group-addon">
 											<i class="material-icons">local_laundry_service</i>
 										</span>
-										<input type="text" class="form-control" name="txtservice" placeholder="Service Provided" required/>
-									</div>	
+										<label style="float:left;margin-top:20px;margin-right:20px;">Intrestes</label>
+										<div class="checkbox">
+										<label>
+											<input type="checkbox" name="check1" value="Management">Management
+											<input type="checkbox" name="check2" value="Volunteer">Volunteer
+											<input type="checkbox" name="check3" value="Helper">Helper											
+										</label>
+										</div>
+										
+									</div>
+									
+								</div>
+								<div class="content col-md-6">
+									
+									
+										
+									<div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">today</i>
+										</span>											
+										<select class="form-control" name="txtyear" style="float:left;" required>
+										<option value="Country">Country</option>
+										<option value="India">India</option>
+										</select>
+									
+										<span class="input-group-addon">
+											<i class="material-icons">today</i>
+										</span>											
+										<select class="form-control" name="txtstate" style="float:left;" required>
+										<option>State</option>
+										<option value="Gujarat">Gujarat</option>
+										<option value="Gujarat">Gujarat</option>
+										<option value="Gujarat">Gujarat</option>
+										</select>
+
+										<span class="input-group-addon">
+											<i class="material-icons">today</i>
+										</span>											
+										<select class="form-control" name="txtcountry" style="float:left;" required>
+										<option>City</option>
+										<option value="Ahmedabad">Ahmedabad</option>
+										</select>
+									</div>
+									
 									
 									<div class="input-group">
 										<span class="input-group-addon">
 											<i class="material-icons">home</i>
 										</span>	
-										<textarea rows=5  placeholder="Address" class="form-control" name="txtaddress" required/></textarea>
+										<textarea rows="7"  placeholder="Upcomming Events" class="form-control" name="txtupcomming" required/></textarea>
 									</div>
 
 									<div class="input-group">
 										<span class="input-group-addon">
 											<i class="material-icons">location_city</i>
 										</span>
-										<textarea rows="9"  class="form-control"  placeholder="AboutUs" name="txtabout" required/></textarea>
+										<textarea rows="9"  class="form-control"  placeholder="Past Events" name="txtpast" required/></textarea>
 									</div>
 
 									

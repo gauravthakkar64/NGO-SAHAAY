@@ -28,13 +28,10 @@ router.get('/fetch/:id', function (req, res, next) {
 });
 
 //demo test function
-router.get('/test', function (req, res, next) {
-    // Volunteers.findOne({email:"email@gmail.com"},function(err,params) {
-    //     console.log(params);
-    console.log(new Date());
-        res.send("Test Api");
-        
-    // });
+router.get('/', function (req, res, next) {
+    Volunteers.find().then(objs=>{
+        res.json(objs);
+    });
     
 });
 // register a volunteer

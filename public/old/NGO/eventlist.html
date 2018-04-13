@@ -77,16 +77,9 @@ $(function(){
   
 });
 </script> 
-
-
-<link href="../pagination/demo/Content/bootstrap.min.css" rel="stylesheet">
-<link href="../pagination/demo/css/jquery.dataTables_themeroller.css" rel="stylesheet">
-    
-
 </head>
 
 <body>
-
     <div class="wrapper">
         <div id="sidebarclass">
 		
@@ -95,51 +88,62 @@ $(function(){
            <div id="headerclass">
 		   
 		   </div>
-            <div class="content" style="margin-top:5px;">
+            <div class="content">
                 <div class="container-fluid">
                     <div class="row">                        
                         <div class="col-md-12">
                             <div class="card card-plain">
                                 <div class="card-header" data-background-color="purple">
-                                    <h2 class="title"><center>View All Certificate</center></h2>
+                                    <h4 class="title">Events</h4>
                                     <!--<p class="category">Here is a subtitle for this table</p>-->
                                 </div>
                                 <div class="card-content table-responsive">
-                                    <table id="dataTable" class="table table-hover">
-														<thead>
-														
-															<th>NGO Name</th>
-															<th>Event Name</th>
-															<th>Services</th>
-															<th>Date</th>
-															<th>View Event</th>
-														</thead>
-														<tbody>
-														<tr>  
-															<td>spsp</td>
-															<td>Blood Donation</td>
-															<td>Ahmedabad</td>
-															<td>25-02-1997</td>
-															<td><a href="singleevent.html"><button type="button" name="txtview" value="View Event" class="btn btn-info" style="border-radius:10px;">View Event</button></a></td>
-														</tr>
-														<tr>  
-															<td>spsp</td>
-															<td>Blood Donation</td>
-															<td>Ahmedabad</td>
-															<td>25-02-1997</td>
-															<td><a href="singleevent.html"><button type="button" name="txtview" value="View Event" class="btn btn-info" style="border-radius:10px;">View Event</button></a></td>
-														</tr>
-														<tr>  
-															<td>spsp</td>
-															<td>Blood Donation</td>
-															<td>Ahmedabad</td>
-															<td>25-02-1997</td>
-															<td><a href="singleevent.html"><button type="button" name="txtview" value="View Event" class="btn btn-info" style="border-radius:10px;">View Event</button></a></td>
-														</tr>
-														
-														
-														</tbody>
-													</table>
+                                    <table class="table table-hover">
+                                        <thead>                                            
+                                            <th>Event Name</th>
+                                            <th>Date</th>
+											<th>City</th>                                            
+                                            <th>State</th>
+											<th>NGO</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr>                                                
+                                                <td>abcabc</td>
+                                                <td>1/04/2018</td>
+												<td>Ahmedabad</td>                                                
+                                                <td>Gujarat</td>
+												<td>Sahaay</td>                                                
+                                            </tr>
+                                            <tr>                                                
+                                                <td>abcabc</td>
+                                                <td>1/04/2018</td>
+												<td>Ahmedabad</td>                                                
+                                                <td>Gujarat</td>
+												<td>Sahaay</td>                                                
+                                            </tr>
+                                            <tr>                                                
+                                                <td>abcabc</td>
+                                                <td>1/04/2018</td>
+												<td>Ahmedabad</td>                                                
+                                                <td>Gujarat</td>
+												<td>Sahaay</td>                                                
+                                            </tr>                                            
+                                            <tr>                                                
+                                                <td>abcabc</td>
+                                                <td>1/04/2018</td>
+												<td>Ahmedabad</td>                                                
+                                                <td>Gujarat</td>
+												<td>Sahaay</td>                                                
+                                            </tr>
+                                            <tr>                                                
+                                                <td>abcabc</td>
+                                                <td>1/04/2018</td>
+												<td>Ahmedabad</td>                                                
+                                                <td>Gujarat</td>
+												<td>Sahaay</td>                                                
+                                            </tr>                                            
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>                            
                         </div>
@@ -152,34 +156,6 @@ $(function(){
 		   </div>
         </div>
     </div>
-	
-<script>
-
-       $(function () {
-
-            $('#dataTable').dataTable({
-               // "bJQueryUI": true,
-                "sPaginationType": "full_numbers",
-				//"pageLength": 1
-            });
-
-            $('#chk-all').click(function () {
-                if ($(this).is(':checked')) {
-                    $('#responsiveTable').find('.chk-row').each(function () {
-                        $(this).prop('checked', true);
-                        $(this).parent().parent().parent().addClass('selected');
-                    });
-                }
-                else {
-                    $('#responsiveTable').find('.chk-row').each(function () {
-                        $(this).prop('checked', false);
-                        $(this).parent().parent().parent().removeClass('selected');
-                    });
-                }
-            });
-        });
-
-</script>
 </body>
 <!--   Core JS Files   -->
 <script src="../assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
@@ -199,9 +175,5 @@ $(function(){
 <script src="../assets/js/material-dashboard.js?v=1.2.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/js/demo.js"></script>
-
-<script src="../pagination/demo/Scripts/bootstrap.min.js"></script>
-<script src='../pagination/demo/js/jquery.dataTables.min.js'></script>
-
 
 </html>
