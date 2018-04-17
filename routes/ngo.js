@@ -96,7 +96,7 @@ router.get('/forgot', function(req, res){
     res.send('response to forgot password page');
     
  });
-//Enter both email and uniqueId to get mail of reset password 
+//Enter both email and uniqueId to get mail of reset password  api
 router.post('/forgot',function(req,res,next){
     async.waterfall([
         function(done){

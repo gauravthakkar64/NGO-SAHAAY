@@ -63,7 +63,7 @@ const ngoSchema = new Schema({
         ref:'Events'
     },
     resetPasswordToken: String,
-    resetPasswordExpires: Date
+    resetPasswordExpires: Date //token expires in 1:00 hr
 });
 
 ngoSchema.methods.setPassword = function(password){
