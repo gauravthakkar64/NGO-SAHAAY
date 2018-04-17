@@ -61,7 +61,9 @@ const ngoSchema = new Schema({
     upcomingEvents:{
         type:[Schema.Types.ObjectId],
         ref:'Events'
-    }
+    },
+    resetPasswordToken: String,
+    resetPasswordExpires: Date
 });
 
 ngoSchema.methods.setPassword = function(password){

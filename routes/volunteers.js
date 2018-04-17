@@ -319,6 +319,7 @@ router.post('/forgot',function(req,res,next){
         res.send('page redirected to change password');
     });
 });
+
 //Reset password token
 router.get('/reset/:token', function(req, res) {
     Volunteers.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
@@ -347,7 +348,8 @@ router.get('/reset/:token', function(req, res) {
           if(req.body.password === req.body.confirm) {
              
                 
-              user.temppassword=req.body.password;
+              //user.temppassword=req.body.password;
+              user.setPassword(req.body.password);
               user.save(function(err){  
                   if(err)
                   {
@@ -364,8 +366,7 @@ router.get('/reset/:token', function(req, res) {
           } else {
             console.log("password not macth");
           }
-          console.log(user);
-          console.log(done);
+          
         });
       },
       function(user, done) {
