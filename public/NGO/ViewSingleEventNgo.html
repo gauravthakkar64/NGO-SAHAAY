@@ -274,6 +274,7 @@
 		{
 			document.getElementById('btnupdate').style.display="block";
 			document.getElementById('btnedit').style.display="none";
+			document.getElementById('btnapproachvollunteer').style.display="block";			
 
 			var name = document.getElementById('eventname').innerHTML;
 			var date = document.getElementById('date').innerHTML;
@@ -314,6 +315,7 @@
 		{
 			document.getElementById('btnedit').style.display="block";
 			document.getElementById('btnupdate').style.display="none";
+			document.getElementById('btnapproachvollunteer').style.display="none";			
 
 			var name = document.getElementById('txteventname').value;
 			var date = document.getElementById('txtdate').value;
@@ -369,7 +371,7 @@
 				</div>
 		<div class="card card-plain col-md-12">
 			<div class="card-header col-md-12" data-background-color="purple">
-				<h2 class="title" style="text-align:center;">Event Details</h2>
+				<h3 class="title">Event Details</h3>
 			</div>
 			<div class="container">
 				<div class="row">
@@ -403,7 +405,8 @@
 						<div class="row">
 							<div class="col-md-12">
 								<input id="btnedit" style="border-radius:5px;margin-top:40px;float:right;font-size:10px;" type="button" class="btn btn-primary" name="btnedit" value="Edit" onclick="edit()">
-								<input style="border-radius:5px;margin-top:40px;float:right;font-size:10px;" type="button" class="btn btn-primary" name="btnaddevent" value="Add Event" onclick="document.location.href='addevent.html';">
+								<input id="btnapproachvollunteer" style="border-radius:5px;margin-top:40px;float:right;font-size:10px;display:none;" type="button" class="btn btn-primary" name="btnapproachvollunteer" value="Approach Volunteer" onclick="document.location.href='managevolunteer.html';">
+								<input style="border-radius:5px;margin-top:40px;float:right;font-size:10px;" type="button" class="btn btn-primary" name="btnaddevent" value="Add New Event" onclick="document.location.href='addevent.html';">
 							</div>
 						</div>
 

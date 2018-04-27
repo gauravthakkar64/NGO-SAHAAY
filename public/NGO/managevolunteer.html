@@ -18,8 +18,8 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
-	<script src="../assets/js/jquery.min.js"> </script>
 
+<script src="../assets/js/jquery.min.js"> </script>
 <script> 
 $(function(){
   $("#sidebarclass").load("sidebar.html"); 
@@ -28,194 +28,79 @@ $(function(){
   
 });
 </script> 
+
+
 <link href="../pagination/demo/Content/bootstrap.min.css" rel="stylesheet">
 <link href="../pagination/demo/css/jquery.dataTables_themeroller.css" rel="stylesheet">
+    
 
 </head>
 
 <body>
-<div class="wrapper">
+
+    <div class="wrapper">
         <div id="sidebarclass">
 		
 		</div>
-    <div class="main-panel">
-			<div id="headerclass">
-		
-			</div>
-            <div class="content" style="margin-top:5px;">           
-	            <div class="container-fluid">
-	                <div class="row">	                   
-						<center><h2 class="title"><b>Manage Volunteers</b></h1></center>						
-	                </div>
-	               
-					<div class="row">	
-								
-							    	<ul class="nav nav-pills" role="tablist">
-										<li class="active">
-											<a href="#studio" role="tab" data-toggle="tab">
-												<i class="material-icons">camera</i>
-												Event
-											</a>
-										</li>
-										<li>
-				                            <a href="#work" role="tab" data-toggle="tab">
-												<i class="material-icons">palette</i>
-												Galary 
-				                            </a>
-				                        </li>
-										<li>
-											<a href="#studio" role="tab" data-toggle="tab">
-												<i class="material-icons">camera</i>
-												Event
-											</a>
-										</li>
-										<li>
-				                            <a href="#work" role="tab" data-toggle="tab">
-												<i class="material-icons">palette</i>
-												Galary 
-				                            </a>
-				                        </li>				                        
-				                    </ul>
-
-				                    <div class="tab-content gallery">
-										<div class="tab-pane active" id="studio">
-				                            <div class="row">
-												<div class="col-md-12">
-													<table id="dataTable" class="table table-hover">
-														<thead>
-														
-															<th>Volunteer Name</th>
-															<th>City</th>
-															<th>Select</th>
-														
-														</thead>
-														<tbody>
-														<tr>  
-															<td>spsp</td>
-															<td>Ahmedabad</td>
-															<td><button class="btn btn-success" type="button" style="border-radius:10px;">Accept</button></td>
-														</tr>
-														
-														<tr>  
-															<td>hhaa</td>
-															<td>Ahmedabad</td>
-															<td><button class="btn btn-success" type="button" style="border-radius:10px;">Accept</button></td>
-														</tr>
-														
-														<tr>  
-															<td>ppspas</td>
-															<td>Ahmedabad</td>
-															<td><button class="btn btn-success" type="button" style="border-radius:10px;">Accept</button></td>
-														</tr>
-														</tbody>
-													</table>
-												</div>											
-				                            </div>
-				                        </div>
-				                        <div class="tab-pane text-center" id="work">
-											<div class="row">
-												
-												<div class="col-md-12">
-												<table class="table table-hover" id="dataTable1">
-														<thead>
-														
-															<th><center>Volunteer Name</center></th>
-															<th><center>City</center></th>
-															<th><center>Select</center></th>
-														
-														</thead>
-														<tbody>
-														<tr>  
-															<td>hero</td>
-															<td>Ahmedabad</td>
-															<td><button class="btn btn-success" type="button" style="border-radius:10px;">Accept</button></td>
-														</tr>
-														
-														<tr>  
-															<td>hhaa</td>
-															<td>Ahmedabad</td>
-															<td><button class="btn btn-success" type="button" style="border-radius:10px;">Accept</button></td>
-														</tr>
-														
-														<tr>  
-															<td>ppspas</td>
-															<td>Ahmedabad</td>
-															<td><button class="btn btn-success" type="button" style="border-radius:10px;">Accept</button></td>
-														</tr>
-														</tbody>
-													</table>
-												</div>
-											</div>
-				                        </div>
-				                    </div>
-				
-							<!-- End Profile Tabs -->
-						
-	                </div>
-	            </div>
-			</div>
-	</div>
-</div>
+        <div class="main-panel">
+           <div id="headerclass">
+		   
+		   </div>
+            <div class="content" style="margin-top:30px;">
+                <div class="container-fluid">
+                    <div class="row">                        
+                        <div class="col-md-12">
+                            <div class="card card-plain">
+                                <div class="card-header" data-background-color="purple">
+                                    <h3 class="title">Approach Volunteer</h3>
+                                    <!--<p class="category">Here is a subtitle for this table</p>-->
+                                </div>
+                                <div class="card-content table-responsive">
+                                    <table id="dataTable" class="table table-hover">
+										<thead>														
+											<th>Volunteer Name</th>
+											<th>City</th>
+											<th>Select</th>
+										
+										</thead>
+										<tbody>
+										<tr>  
+											<td>spsp</td>
+											<td>Ahmedabad</td>
+											<td><button class="btn btn-success" type="button" style="border-radius:10px;">Approach</button></td>
+										</tr>
+										
+										<tr>  
+											<td>hhaa</td>
+											<td>Ahmedabad</td>
+											<td><button class="btn btn-success" type="button" style="border-radius:10px;">Approach</button></td>
+										</tr>
+										
+										<tr>  
+											<td>ppspas</td>
+											<td>Ahmedabad</td>
+											<td><button class="btn btn-success" type="button" style="border-radius:10px;">Approach</button></td>
+										</tr>
+										</tbody>
+									</table>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+           <div id="footerclass">
+		   
+		   </div>
+        </div>
+    </div>
+	
 <script>
 
        $(function () {
 
             $('#dataTable').dataTable({
-               // "bJQueryUI": true,
-                "sPaginationType": "full_numbers",
-				//"pageLength": 1
-            });
-
-            $('#chk-all').click(function () {
-                if ($(this).is(':checked')) {
-                    $('#responsiveTable').find('.chk-row').each(function () {
-                        $(this).prop('checked', true);
-                        $(this).parent().parent().parent().addClass('selected');
-                    });
-                }
-                else {
-                    $('#responsiveTable').find('.chk-row').each(function () {
-                        $(this).prop('checked', false);
-                        $(this).parent().parent().parent().removeClass('selected');
-                    });
-                }
-            });
-        });
-
-</script>
-
-<script>
-
-       $(function () {
-
-            $('#dataTable1').dataTable({
-               // "bJQueryUI": true,
-                "sPaginationType": "full_numbers",
-				//"pageLength": 1
-            });
-
-            $('#chk-all').click(function () {
-                if ($(this).is(':checked')) {
-                    $('#responsiveTable').find('.chk-row').each(function () {
-                        $(this).prop('checked', true);
-                        $(this).parent().parent().parent().addClass('selected');
-                    });
-                }
-                else {
-                    $('#responsiveTable').find('.chk-row').each(function () {
-                        $(this).prop('checked', false);
-                        $(this).parent().parent().parent().removeClass('selected');
-                    });
-                }
-            });
-        });
-
-</script>
-<script>
-
-       $(function () {
-
-            $('#dataTable2').dataTable({
                // "bJQueryUI": true,
                 "sPaginationType": "full_numbers",
 				//"pageLength": 1
@@ -257,16 +142,34 @@ $(function(){
 <script src="../assets/js/material-dashboard.js?v=1.2.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/js/demo.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-
-        // Javascript method's body can be found in assets/js/demos.js
-        demo.initDashboardPageCharts();
-
-    });
-</script>
 
 <script src="../pagination/demo/Scripts/bootstrap.min.js"></script>
 <script src='../pagination/demo/js/jquery.dataTables.min.js'></script>
+
+
+<script src="/assets/js/handlebars-v4.0.11.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" type="text/javascript"></script>
+    
+  <script type="text/javascript">
+    
+    $().ready(function(){
+      var ngoId = "5ab7a12117f80f169302a9bc";
+      console.log('/api/events/upcoming')
+      axios.get('/api/events/ngoevent/'+ngoId)
+        .then(function (resp) {
+          console.log(resp.data);
+          var source   = document.getElementById('eventTemplate').innerHTML;
+          var template = Handlebars.compile(source);
+          $("#eventContent").html(template({events: resp.data}));
+          //$("#allEvent").modal()
+        })
+        .catch(function (error) {
+          $("#loading").html('Invalid Id');
+          console.log(error);
+        });   
+      
+       });
+
+  </script>
 
 </html>
