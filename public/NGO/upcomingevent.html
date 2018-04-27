@@ -107,7 +107,8 @@ $(function(){
                                             <th>Date</th>
 											<th>City</th>                                            
                                             <th>State</th>
-											<th>NGO</th>
+                                            <th>NGO</th>
+                                            <th></th>
                                         </thead>
                                         <tbody id="eventContent">
                                           
@@ -121,6 +122,10 @@ $(function(){
                                                         <td>{{venue.city}}</td>
                                                         <td>{{venue.state}}</td>
                                                         <td>{{ngoId}}</td>
+                                                        <td>
+                                                            <a href="ViewSingleEventNgo.html"><button type="button" name="btnview" value="View Event" class="btn btn-info" style="border-radius:10px; margin-top: 1px;">View</button></a>
+                                                            <a href="#"><button type="button" name="btndelete" value="Delete Event" class="btn btn-danger" style="border-radius:10px; margin-top: 1px;">Delete</button></a></td>                                               
+                                                        </td>                                              
                                                         </tr>
                                                     {{/each}}
                                         </script>
