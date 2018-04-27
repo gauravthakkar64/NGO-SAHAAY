@@ -96,13 +96,14 @@ $(function(){
                         <div class="col-md-12">
                             <div class="card card-plain">
                                 <div class="card-header" data-background-color="purple">
-                                    <h4 class="title">Our Volunteers</h4>
+                                    <h3 class="title">Our Volunteers</h3>
                                     <!--<p class="category">Here is a subtitle for this table</p>-->
                                 </div>
                                 <div class="card-content table-responsive">
                                     <table class="table table-hover" id="dataTable">
                                         <thead>                                            
                                             <th>Volunteer Name</th>
+                                            <th>Contact</th>
                                             <th>City</th>                                            
                                             <th>Total Participated Events</th>                                            
                                         </thead>
@@ -114,6 +115,7 @@ $(function(){
                                                     {{#each events}}
                                                         <tr>
                                                         <td>{{name}}</td>
+                                                        <td></td>
                                                         <td>{{address.city}}</td>
                                                         <td>{{totalParticipation}}</td>
                                                         </tr>
