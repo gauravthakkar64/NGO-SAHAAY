@@ -439,7 +439,37 @@ function allLetter(txteventname)
       fileReader.readAsDataURL(fileToLoad);
     }
   }
-
+	function validate(eventData)
+	{
+		
+		if(eventData.name=="")
+		{
+			alert("Event Name is not found");
+			return false;
+		}
+		if(eventData.totalDays=="")
+		{
+			alert("Event Total Days is not found");
+			return false;
+		}
+		if(eventData.volunteerSize=="")
+		{
+			alert("Volunteer Size is not found");
+			return false;
+		}
+		if(eventData.date=="")
+		{
+			alert("Event Date is not found");
+			return false;
+		}
+		if(eventData.venue.street=="")
+		{
+			alert("Event Street is not found");
+			return false;
+		}
+		
+		return true;
+	}
   $().ready(function(){
       var ngoId = "5ab7a12117f80f169302a9bc";
       $("#btnCreate").click(function(event){
@@ -464,7 +494,8 @@ function allLetter(txteventname)
 
         }
         console.log(eventData);
-
+		if (validate(eventData)==false)
+			return;
 
         axios.post('/api/events/create', eventData)
              .then(function (resp) {
