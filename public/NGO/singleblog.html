@@ -51,39 +51,48 @@ $(function(){
                 <div class="container-fluid" >
                     <div class="row">
                         <div class="col-md-12">
+                            <div id="templateContent" class="content" style="margin-top:75px;">
+                               <center><h2 id="loading">Loading...</h2></center>
+                            </div>
+                        </div>
+
+                        <script id="eventTemplate" type="text/x-handlebars-template">
                             <div class="card">
                                 <div class="card-header" data-background-color="purple">
-                                    <h3 class="title">Blog</h3>
+                                    <h3 class="title">{{blog.title}}</h3>
                                     <!-- <p class="category">Add new Event</p> -->
                                 </div>
                                 <div class="row">
-                                        <h3 style="margin-left:90px;"><strong> Title : Tree Plantation</strong> </h3> 
-                                        <img class="image" src="../assets/img/examples/1.jpg" alt="Alternate" style="width:88%;height:300px;margin-left:8%;">
+                                        <h3 style="margin-left:90px;"><strong> Title : {{blog.title}}</strong> </h3> 
+                                        <img class="image" src="{{blog.featuredImage.image}}" alt="Alternate" style="width:88%;height:300px;margin-left:8%;">
                                         <div class="caption">
-                                            <p style="float:left;margin-left:100px;">Date : 12-04-2018 </p><p style="float:right;margin-right:100px;">Author : Robbin Sharma</p><br>                                            
+                                            <p style="float:left;margin-left:100px;">Date : {{blog.date}} </p><p style="float:right;margin-right:100px;">Author : {{ngo.name}}</p><br>                                            
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <img src="../assets/img/city.jpg" style="height:200px;width:300px;margin-left:70px;"/>
+                                    {{#each blog.images}}
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <img src="{{image}}" style="height:200px;width:300px;margin-left:70px;"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <img src="{{image}}" style="height:200px;width:300px;margin-left:40px;"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <img src="{{image}}" style="height:200px;width:300px;margin-left:5px;"/>
+                                            </div>
+                                            
                                         </div>
-                                        <div class="col-md-4">
-                                            <img src="../assets/img/city.jpg" style="height:200px;width:300px;margin-left:40px;"/>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <img src="../assets/img/city.jpg" style="height:200px;width:300px;margin-left:5px;"/>
-                                        </div>
-                                        
-                                    </div>
+                                    {{/each}}
                                     <div class="row">
                                         <div class="col-md-12">
                                              <div class="well" style="height:500px;width:950px;margin-left:70px;margin-top:10px;border-solid:1px;">
-                                                 <center>Blog Body</center>
+                                                 <center>{{blog.body}}y</center>
                                             </div>
                                         </div>
                                     </div>
                             </div>
-                        </div>                        
+                        </script>
+
                     </div>
                 </div>
             </div>
@@ -115,5 +124,41 @@ $(function(){
 
 <script src="../assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
 <script src="../assets/js/material-kit.js" type="text/javascript"></script>
+<script src="/assets/js/handlebars-v4.0.11.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" type="text/javascript"></script>
+    
+  <script>  
+    function getParameterByName(name) {
+            var url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;                                                                                                                                                                                                  
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
 
+    $().ready(function(){
+      var blogId = getParameterByName('id');
+      console.log(blogId);
+
+      axios.get('/api/blog/'+blogId)
+        .then(function (blog) {
+                  var source   = document.getElementById('eventTemplate').innerHTML;
+                  var template = Handlebars.compile(source);
+                  $("#templateContent").html(template(
+                     {
+                        blog: blog.data.blog[0],
+                        ngo: blog.data
+                     }
+                  ));
+                  console.log(blog.data);
+
+        })
+        .catch(function (error) {
+          $("#loading").html('Invalid Id');
+          console.log(error);
+        }); 
+    });
+  </script>
 </html>
