@@ -72,31 +72,29 @@
 <script> 
 $(function(){
   $("#sidebarclass").load("sidebar.html"); 
-  $("#headerclass").load("header.html"); 
-  $("#footerclass").load("footer.html"); 
-  
+  $("#headerclass").load("header.html");
 });
 </script> 
 <script type="text/javascript">
 	$(document).ready(function(){
-	$("#test21").keyup(function() {
-	    var val = $("#test21").val();
+	$("#test24").keyup(function() {
+	    var val = $("#test24").val();
 	    if (parseInt(val) < 0 || isNaN(val)) {
 	        alert("Please Enter Only Numeric Values in Mobile Number");
-	        $("#test21").val("");
-	        $("#test21").focus();
+	        $("#test24").val("");
+	        $("#test24").focus();
 	    }
 		});
 	});
 </script>
 <script type="text/javascript">
 	$(document).ready(function(){
-	$("#test22").keyup(function() {
-	    var val = $("#test22").val();
+	$("#test25").keyup(function() {
+	    var val = $("#test25").val();
 	    if (parseInt(val) < 0 || isNaN(val)) {
 	        alert("Please Enter Only Numeric Values in Weekly Hours");
-	        $("#test22").val("");
-	        $("#test22").focus();
+	        $("#test25").val("");
+	        $("#test25").focus();
 	    }
 		});
 	});
@@ -170,7 +168,7 @@ function allLetter(txtname)
 											<i class="material-icons">smartphone</i>
 										</span>
 										
-										<input type="text" id="test21" class="form-control" placeholder="Mobile Number" name="txtmobile" value="{{contactNumber}}" required/>
+										<input type="text" id="test24" class="form-control" placeholder="Mobile Number" name="txtmobile" maxlength="10" value="{{contactNumber}}" required/>
 									</div>
 									
 									<div class="input-group">
@@ -178,7 +176,7 @@ function allLetter(txtname)
 											<i class="material-icons">smartphone</i>
 										</span>
 										
-										<input type="text" id="test22" class="form-control" name="txtweekly" placeholder="Weekly Hours" value="{{weeklyHours
+										<input type="text" id="test25" class="form-control" name="txtweekly" placeholder="Weekly Hours" maxlength="2" value="{{weeklyHours
 									}}" required/>
 									</div>
 										
