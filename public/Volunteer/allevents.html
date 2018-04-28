@@ -217,6 +217,7 @@ $(function(){
           var template = Handlebars.compile(source);
           $("#eventContent").html(template({events: resp.data}));
           //$("#allEvent").modal()
+          console.log(resp.data);
         })
         .catch(function (error) {
           $("#loading").html('Invalid Id');
